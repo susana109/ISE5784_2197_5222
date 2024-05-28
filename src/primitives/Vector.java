@@ -1,0 +1,116 @@
+package primitives;
+
+/**
+ * Class Vector represents a vector in a 3D space.
+ * It extends the Point class to leverage its coordinate storage.
+ */
+public class Vector extends Point{
+    /**
+     *Constructor to initialize a Vector object with three coordinates.
+     * @param x
+     * @param y
+     * @param z
+     */
+    public Vector(double x, double y, double z) {
+        super(x, y, z);
+        if (this.xyz.equals(ZERO)) {
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+
+    }
+
+    /**
+     * Constructor to initialize a Vector object with a Double3 object.
+     * @param double3
+     */
+    public Vector (Double3 double3) {
+        super(double3);
+        if (this.xyz.equals(ZERO)) {
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+    }
+
+
+    public String toString() {
+        return super.toString();
+    }
+    /**
+     * Adds another vector to this vector and returns the resulting vector.
+     * @param v the vector to add
+     * @return the resulting vector
+     */
+    public Vector add(Vector v) {
+        Vector result = new Vector(this.xyz.add(v.xyz));
+        if (result.equals(ZERO)) { // Assuming ZERO is a constant zero vector
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+        return result;
+    }
+    /**
+     * Scales this vector by a scalar and returns the resulting vector.
+     * @param d the scalar to scale by
+     * @return the resulting vector
+     */
+    public Vector scale (double d)
+    { Vector result=new Vector(this.xyz.scale(d));
+        if (result.equals(ZERO)) {
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+        return result;
+
+    }
+    /**
+     * Computes the dot product of this vector and another vector.
+     * @param v the other vector
+     * @return the dot product
+     */
+    public double dotProduct (Vector v) {
+        double a=this.xyz.d1*v.xyz.d1+this.xyz.d2*v.xyz.d2+this.xyz.d3*v.xyz.d3;
+        return a;
+    }
+    /**
+     * Computes the cross product of this vector and another vector.
+     * @param v the other vector
+     * @return the resulting vector
+     */
+    public Vector crossProduct (Vector v) {
+        double x=(this.xyz.d2*v.xyz.d3)-(this.xyz.d3*v.xyz.d2);
+        double y=(this.xyz.d3*v.xyz.d1)-(this.xyz.d1*v.xyz.d3);
+        double z=(this.xyz.d1*v.xyz.d2)-(this.xyz.d2*v.xyz.d1);
+        Vector result = new Vector(x, y, z);
+        if (result.equals(ZERO)) {
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+        return result;
+    }
+    /**
+     * Computes the squared length of this vector.
+     * @return the squared length
+     */
+    public double lengthSquared()
+    {
+        double a=(this.xyz.d1*this.xyz.d1)+(this.xyz.d2*this.xyz.d2)+(this.xyz.d3*this.xyz.d3);
+        return a;
+    }
+    /**
+     * Computes the length of this vector.
+     * @return the length
+     */
+    public double length(){
+        return Math.sqrt(this.lengthSquared());
+    }
+    /**
+     * Normalizes this vector and returns the resulting unit vector.
+     * @return the normalized vector
+     */
+    public Vector normalize() {
+        if (this.length() == 0) {
+            throw new IllegalArgumentException("Cannot have a zero vector");
+        }
+        double x=this.xyz.d1/this.length();
+        double y=this.xyz.d2/this.length();
+        double z= this.xyz.d3/this.length();
+        return new Vector(x,y,z);
+    }
+}
+

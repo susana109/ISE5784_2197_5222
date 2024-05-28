@@ -1,0 +1,58 @@
+package primitives;
+
+/**
+ * Class Ray is the basic class representing a fundamental object
+ * in geometry. It is the collection of all the points on one side of
+ * a line in one direction starting from a single point on the line.
+ * Defined by a point and a direction (unit vector).
+ * @author Ariella Boukoubza and Bitya Susana
+ */
+
+import primitives.*;
+
+import java.util.Objects;
+
+public class Ray {
+    private final Point head;
+    private final Vector direction;
+
+    /**
+     *Constructor to initialize a Ray object with a starting point and a direction.
+     *      * The direction vector is normalized.
+     * @param head
+     * @param direction
+     */
+
+    public Ray(Point head, Vector direction) {
+        this.head = head;
+        // Normalizing the direction vector
+        this.direction = direction.normalize();
+    }
+
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        return (obj instanceof Ray r)
+                && this.head.equals(r.head)
+                && this.direction.equals(r.direction);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, direction);
+    }
+
+
+    public String toString() {
+        return "Ray{" +
+                "point=" + head+
+                ", direction=" + direction +
+                '}';
+
+
+    }
+
+    public Point getHead() { return this.getHead();}
+
+    public Vector getDirection() { return this.getDirection();}
+}
+
