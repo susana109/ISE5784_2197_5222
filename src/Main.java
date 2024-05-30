@@ -14,7 +14,7 @@ import primitives.*;
 
 /**
  * Test program for the 1st stage
- * @author Ariella and Bitya
+ * @author Ariella and Bitya and me
  */
 public final class Main {
 
