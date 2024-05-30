@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.Objects;
+
 /**
  * Class Vector represents a vector in a 3D space.
  * It extends the Point class to leverage its coordinate storage.
@@ -33,6 +35,17 @@ public class Vector extends Point{
 
     public String toString() {
         return super.toString();
+    }
+
+    public boolean equals(Object o) {
+        boolean result;
+        if (this == o) {
+            result = true;
+        } else if (!(o instanceof Vector vector)) result = false;
+        else {
+            result = (o instanceof Vector) && Objects.equals(xyz, vector.xyz);
+        }
+        return result;
     }
     /**
      * Adds another vector to this vector and returns the resulting vector.
@@ -78,9 +91,6 @@ public class Vector extends Point{
         double y=(this.xyz.d3*v.xyz.d1)-(this.xyz.d1*v.xyz.d3);
         double z=(this.xyz.d1*v.xyz.d2)-(this.xyz.d2*v.xyz.d1);
         Vector result = new Vector(x, y, z);
-        if (result.equals(ZERO)) {
-            throw new IllegalArgumentException("Cannot have a zero vector");
-        }
         return result;
     }
     /**

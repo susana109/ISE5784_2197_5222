@@ -37,7 +37,7 @@ class PlaneTest {
                 "ERROR:Plane's constructor must have 3 different points");
         Vector vd1=p1.subtract(p2);
         Vector vd2=p1.subtract(p3);
-        assertNotEquals(0,1);
+        assertNotEquals(0,vd1.dotProduct(vd2),DELTA,"ERROR:The points are all on the same line");
     }
 
 }

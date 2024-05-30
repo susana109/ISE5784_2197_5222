@@ -10,9 +10,9 @@ import primitives.*;
 
 public class Plane implements Geometry {
     /** A point on the plane */
-    private final Point q0;
+    private Point q0;
     /** The normal vector to the plane */
-    private final Vector normal;
+    private  Vector normal;
 
     /**
      *Constructs a Plane from three points.
@@ -22,20 +22,20 @@ public class Plane implements Geometry {
      * @param p3
      */
     public Plane(Point p1, Point p2, Point p3) {
-        q0 = p1;
-        normal  = null;
+        this.q0 = p1;
+        this.normal  = (p1.subtract(p2).crossProduct(p2.subtract(p3))).normalize();
 
     }
     /**
      * Constructs a Plane from a point and a normal vector.
      *
      * @param q0 the point on the plane
-     * @param normal the normal vector to the plane
+     * @param v the normal vector to the plane
      */
 
-    public Plane(Point q0, Vector normal){
+    public Plane(Point q0, Vector v){
         this.q0 = q0;
-        this.normal=normal.normalize();
+        this.normal=v.normalize();
 
     }
     /**

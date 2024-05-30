@@ -1,10 +1,7 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
-
+import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TubeTest {
@@ -23,11 +20,12 @@ class TubeTest {
         assertEquals(0,v1.dotProduct(result),DELTA,
                 "Tube's normal is not orthogonal to the tube's axis" );
         // =============== Boundary Values Tests ==================
-        // a point on the tube creates a 90 angle to the ray
+        // a point on the tube creates a 90deg angle to the ray
+        //a point on the tube at 90 deg of the point p1
         Point p=new Point(2,0,1);
+        //vector from p1 to p parallel to the normal
         Vector v=p.subtract(p1);
-        assertEquals(new Vector(1,1,1),
-                v1.crossProduct(result),
+        assertTrue(v1.crossProduct(result).equals(Double3.ZERO),
                 "Tube's normal is not orthogonal to the tube's axis" );
     }
 }
