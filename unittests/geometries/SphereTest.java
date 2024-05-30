@@ -1,0 +1,28 @@
+package geometries;
+
+import org.junit.jupiter.api.Test;
+import primitives.Point;
+import primitives.Vector;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SphereTest {
+    private final double DELTA = 0.000001;
+    @Test
+    void testGetNormal() {
+        // ============ Equivalence Partitions Tests ==============
+        //p1 is the center of the sphere
+        Point p1= new Point(0, 0, 1);
+        //P2 is a point on the sphere
+        Point p2= new Point(2, 0, 1);
+        Sphere sphere;
+        sphere = new Sphere( p1,2);
+        Vector result = sphere.getNormal(p1);
+        // ensure |result| = 1
+        assertEquals(1, result.length(), DELTA, "Sphere's normal is not a unit vector");
+        // ensure the result is orthogonal to the vector director of the plane
+        Vector vd=p2.subtract(p1);
+        assertEquals(0,vd.dotProduct(result),DELTA,
+                "Sphere's normal is not orthogonal to the sphere" );
+    }
+}
