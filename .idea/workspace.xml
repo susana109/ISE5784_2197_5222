@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="ajout des unittests de geometries">
+    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="stage 2 project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/PointTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/RadialGeometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/RadialGeometryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717060095089</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="stage 2 project">
+      <option name="closed" value="true" />
+      <created>1717318079357</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717318079357</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +258,7 @@
     <MESSAGE value="stage 1 project" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="ajout des unittests de geometries" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout des unittests de geometries" />
+    <MESSAGE value="stage 2 project" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 2 project" />
   </component>
 </project>
