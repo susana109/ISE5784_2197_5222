@@ -26,10 +26,10 @@ public class Point {
      initialize a
      Point object
      with an object type Double 3
-     * @param double3
+     * @param xyz
      */
-    public Point (Double3  double3){
-        this.xyz=double3;
+    public Point (Double3  xyz){
+        this.xyz=xyz;
     }
 
 

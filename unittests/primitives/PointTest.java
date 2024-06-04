@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PointTest {
 
+    public static final double DELTA = 0.00001;
+
     /**
      * Test method for {@link primitives.Point#add(primitives.Vector)}.
      */
@@ -32,13 +34,16 @@ class PointTest {
         Point p3 = new Point(2, 4, 5);
 
         // Check if the squared distance to itself is zero
-        assertEquals(0, p1.distanceSquared(p1), 0.00001, "ERROR: point squared distance to itself is not zero");
+        assertEquals(0, p1.distanceSquared(p1), DELTA, "ERROR: point squared distance to itself is not zero");
 
         // Check if the squared distance between two points is calculated correctly
-        assertEquals(9, p1.distanceSquared(p3), 0.00001, "ERROR: squared distance between points is wrong");
+        assertEquals(9, p1.distanceSquared(p3), DELTA, "ERROR: squared distance between points is wrong");
 
         // Check if the squared distance between two points is calculated correctly
-        assertEquals(9, p3.distanceSquared(p1), 0.00001, "ERROR: squared distance between points is wrong");
+        assertEquals(9,
+                p3.distanceSquared(p1),
+                DELTA,
+                "ERROR: squared distance between points is wrong");
     }
 
     /**
@@ -51,13 +56,13 @@ class PointTest {
         Point p3 = new Point(2, 4, 5);
 
         // Check if the distance between two points is calculated correctly
-        assertEquals(3, p1.distance(p3), 0.00001, "ERROR: distance between points is wrong");
+        assertEquals(3, p1.distance(p3), DELTA, "ERROR: distance between points is wrong");
 
         // Check if the distance between two points is calculated correctly
-        assertEquals(3, p3.distance(p1), 0.00001, "ERROR: distance between points is wrong");
+        assertEquals(3, p3.distance(p1), DELTA, "ERROR: distance between points is wrong");
 
         // Check if the distance between two points is zero
-        assertEquals(0, p1.distance(p1), 0.00001, "ERROR: point distance to itself is not zero");
+        assertEquals(0, p1.distance(p1), DELTA, "ERROR: point distance to itself is not zero");
     }
 
     /**
@@ -70,11 +75,14 @@ class PointTest {
         Point p3 = new Point(2, 4, 5);
 
         // Check if the subtraction of one point from another produces the correct vector
-        assertEquals(new Vector(1, 2, 2), p3.subtract(p1), "ERROR: Point - Point does not work correctly");
+        assertEquals(
+                new Vector(1, 2, 2),
+                p3.subtract(p1),
+                "ERROR: Point - Point does not work correctly");
 
         // =============== Boundary Values Tests ==================
         // Check if subtracting a point from itself throws an IllegalArgumentException
-        // assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
-        //         "ERROR: (point - itself) does not throw an exception");
+         assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
+                "ERROR: (point - itself) does not throw an exception");
     }
 }
