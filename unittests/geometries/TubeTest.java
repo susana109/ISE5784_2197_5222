@@ -32,11 +32,11 @@ class TubeTest {
 
 
         /** ============ Equivalence Partitions Tests ==============
-         // ensure |result| = 1
-         assertEquals(1, tNormal.length(), DELTA, "Error:Tube's normal is not a unit vector");
+        // ensure |result| = 1
+        assertEquals(1, tNormal.length(), DELTA, "Error:Tube's normal is not a unit vector");
 
-         // ensure the result is orthogonal to the tube's axis
-         assertEquals(0, tNormal.dotProduct(), DELTA, "Error:Tube's normal is not orthogonal to the tube's axis");*/
+        // ensure the result is orthogonal to the tube's axis
+        assertEquals(0, tNormal.dotProduct(), DELTA, "Error:Tube's normal is not orthogonal to the tube's axis");*/
 
         // =============== Boundary Values Tests ==================
         // a point on the tube creates a 90-degree angle to the ray
