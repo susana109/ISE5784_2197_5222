@@ -94,8 +94,7 @@ public class Vector extends Point {
         double x = (this.xyz.d2 * v.xyz.d3) - (this.xyz.d3 * v.xyz.d2);
         double y = (this.xyz.d3 * v.xyz.d1) - (this.xyz.d1 * v.xyz.d3);
         double z = (this.xyz.d1 * v.xyz.d2) - (this.xyz.d2 * v.xyz.d1);
-        Vector result = new Vector(x, y, z);
-        return result;
+        return new Vector(x, y, z);
     }
 
     /**
@@ -104,8 +103,7 @@ public class Vector extends Point {
      * @return the squared length
      */
     public double lengthSquared() {
-        double a = (this.xyz.d1 * this.xyz.d1) + (this.xyz.d2 * this.xyz.d2) + (this.xyz.d3 * this.xyz.d3);
-        return a;
+        return (this.xyz.d1 * this.xyz.d1) + (this.xyz.d2 * this.xyz.d2) + (this.xyz.d3 * this.xyz.d3);
     }
 
     /**
