@@ -1,7 +1,8 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.*;
+import primitives.Point;
+import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,13 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlaneTest {
     private final double DELTA = 0.000001;
 
-
+    /**
+     * Test method for {@link geometries.Plane#getNormal(primitives.Point)}.
+     */
     @Test
     void testGetNormal() {
         // Test code for getNormal method should be implemented here.
     }
 
-
+    /**
+     * Test method for {@link geometries.Plane#getNormal(primitives.Point)}.
+     */
     @Test
     void testTestGetNormal() {
         // ============ Equivalence Partitions Tests ==============

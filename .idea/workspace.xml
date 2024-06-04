@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="stage 2 project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,26 +55,19 @@
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in ISE5784_2197_5222.executor": "Run",
-    "JUnit.CylinderTest.executor": "Run",
-    "JUnit.GeometryTest.executor": "Debug",
-    "JUnit.PlaneTest.executor": "Run",
-    "JUnit.PointTest.executor": "Run",
     "JUnit.PointTest.testAdd.executor": "Run",
     "JUnit.PointTest.testDistance.executor": "Run",
     "JUnit.PointTest.testDistanceSquared.executor": "Run",
     "JUnit.PointTest.testSubtract.executor": "Run",
-    "JUnit.PolygonTest.executor": "Run",
-    "JUnit.RadialGeometryTest.executor": "Run",
-    "JUnit.SphereTest.executor": "Run",
-    "JUnit.SphereTest.testGetNormal.executor": "Run",
-    "JUnit.TriangleTest.testGetNormal.executor": "Run",
     "JUnit.Tube.executor": "Run",
     "JUnit.Tube.test.executor": "Run",
     "JUnit.TubeTest.executor": "Run",
     "JUnit.TubeTest.testGetNormal.executor": "Run",
+    "JUnit.Vector.executor": "Run",
     "JUnit.VectorTest.executor": "Run",
     "JUnit.VectorTest.testAdd.executor": "Run",
     "JUnit.VectorTest.testCrossProduct.executor": "Run",
+    "JUnit.VectorTest.testNormalize.executor": "Run",
     "JUnit.Whole project.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -91,9 +82,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Global Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -106,49 +98,18 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TriangleTest.testGetNormal">
-    <configuration name="SphereTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Vector">
+    <configuration name="PointTest.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="primitives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.SphereTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SphereTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.SphereTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TriangleTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="PACKAGE_NAME" value="primitives" />
+      <option name="MAIN_CLASS_NAME" value="primitives.PointTest" />
+      <option name="METHOD_NAME" value="testAdd" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -169,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TubeTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tube.test" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
@@ -181,24 +142,56 @@
       <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
       <option name="METHOD_NAME" value="testGetNormal" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Vector" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="primitives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="primitives" />
+      <option name="MAIN_CLASS_NAME" value="primitives.VectorTest" />
+      <option name="METHOD_NAME" value="testNormalize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Whole project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.SphereTest" />
-      <item itemvalue="JUnit.SphereTest.testGetNormal" />
-      <item itemvalue="JUnit.TriangleTest.testGetNormal" />
+      <item itemvalue="JUnit.Vector" />
       <item itemvalue="JUnit.TubeTest" />
-      <item itemvalue="JUnit.TubeTest.testGetNormal" />
+      <item itemvalue="JUnit.PointTest.testAdd" />
+      <item itemvalue="JUnit.Tube.test" />
+      <item itemvalue="JUnit.Whole project" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TriangleTest.testGetNormal" />
+        <item itemvalue="JUnit.Vector" />
+        <item itemvalue="JUnit.Whole project" />
+        <item itemvalue="JUnit.Tube.test" />
         <item itemvalue="JUnit.TubeTest" />
-        <item itemvalue="JUnit.TubeTest.testGetNormal" />
-        <item itemvalue="JUnit.SphereTest" />
-        <item itemvalue="JUnit.SphereTest.testGetNormal" />
+        <item itemvalue="JUnit.PointTest.testAdd" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +212,7 @@
       <option name="presentableId" value="Default" />
       <updated>1716892369720</updated>
       <workItem from="1716892370317" duration="4531000" />
-      <workItem from="1717485595512" duration="7839000" />
+      <workItem from="1717485595512" duration="10500000" />
     </task>
     <task id="LOCAL-00001" summary="stage 1 project">
       <option name="closed" value="true" />
@@ -301,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717487261278</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="stage 2 project">
+      <option name="closed" value="true" />
+      <created>1717493547865</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717493547865</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,5 +325,16 @@
     <MESSAGE value="ajout des unittests de geometries" />
     <MESSAGE value="stage 2 project" />
     <option name="LAST_COMMIT_MESSAGE" value="stage 2 project" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/primitives/VectorTest.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

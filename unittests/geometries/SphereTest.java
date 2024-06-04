@@ -1,7 +1,8 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.*;
+import primitives.Point;
+import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +16,7 @@ class SphereTest {
     private final double DELTA = 0.000001;
 
     /**
-     * Test method
+     * Test method for {@link geometries.Sphere#getNormal(primitives.Point)}.
      */
     @Test
     void testGetNormal() {
@@ -25,13 +26,11 @@ class SphereTest {
         // p2 is a point on the sphere
         Point p2 = new Point(2, 0, 1);
         Sphere sphere = new Sphere(p1, 2);
-        Vector result = sphere.getNormal(p2);
+        Vector result = sphere.getNormal(p1);
         // ensure |result| = 1
         assertEquals(1, result.length(), DELTA, "Sphere's normal is not a unit vector");
         // ensure the result is orthogonal to the radius vector
         Vector vd = p2.subtract(p1);
-        assertThrows(IllegalArgumentException.class, () ->  vd.crossProduct(result),
-                "Sphere's normal is not orthogonal to the sphere");
-
+        assertEquals(0, vd.dotProduct(result), DELTA, "Sphere's normal is not orthogonal to the sphere");
     }
 }

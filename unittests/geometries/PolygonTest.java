@@ -1,10 +1,10 @@
-
 package geometries;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import primitives.*;
+import primitives.Point;
+import primitives.Vector;
 
 /**
  * Testing Polygons
@@ -18,7 +18,9 @@ public class PolygonTest {
      */
     private final double DELTA = 0.000001;
 
-
+    /**
+     * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
+     */
     @Test
     public void testConstructor() {
         // ============ Equivalence Partitions Tests ==============
