@@ -119,10 +119,10 @@ class VectorTest {
                 u.length() - 1,
                 0.001, "ERROR: the normalized vector is not a unit vector");
         // TC02: Test if the normalized vector is parallel to the original one
-        assertTrue(v.crossProduct(u).equals(Double3.ZERO),
+        assertThrows(IllegalArgumentException.class, () -> v.crossProduct(u),
                 "ERROR: the normalized vector is not parallel to the original one");
         // TC03: Test if the normalized vector and the original one has the same direction
-        assertEquals(0, v.dotProduct(u) < 0,
+        assertTrue( v.dotProduct(u) > 0,
                 "ERROR: the normalized vector is opposite to the original one");
     }
 }

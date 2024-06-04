@@ -20,7 +20,7 @@ public class Tube extends RadialGeometry {
      */
     public Tube(Ray axis, double radius) {
         super(radius);
-        this.axis = axis;
+        this.axis= axis;
 
     }
 
@@ -31,24 +31,6 @@ public class Tube extends RadialGeometry {
      * @return the normal vector at the given point
      */
 
-    /**public Vector getNormal(Point3D p) {
-        //The vector from the point of the cylinder to the given point
-        Point3D o = _axisRay.get_p();
-        Vector v = _axisRay.get_dir();
-
-        Vector vector1 = p.subtract(o);
-
-        //We need the projection to multiply the _direction unit vector
-        double projection = vector1.dotProduct(v);
-        if (!isZero(projection)) {
-            // projection of P-O on the ray:
-            o.add(v.scale(projection));
-        }
-
-        //This vector is orthogonal to the _direction vector.
-        Vector check = p.subtract(o);
-        return check.normalize();
-    }*/
     public Vector getNormal(Point point) {
         // Get the point on the axis (projection of the point onto the axis)
         Point p0 = axis.getHead();
