@@ -51,8 +51,12 @@ public class Ray {
 
     }
 
-    public Point getHead() { return this.getHead();}
+    public Point getHead() {
+        return head;
+    }
 
-    public Vector getDirection() { return this.getDirection();}
+    public Vector getDirection() {
+        return direction;
+    }
 }
 
