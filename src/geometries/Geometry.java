@@ -4,7 +4,7 @@ import primitives .*;
  * Geometry interface defines a common behavior for geometric objects.
  * All geometric objects must be able to return the normal vector at a given point.
  */
-public interface Geometry {
+public interface Geometry extends Intersectable{
     /**
      * Returns the normal vector to the geometry at a given point.
      *
