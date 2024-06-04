@@ -11,6 +11,7 @@ class CylinderTest {
      */
     @Test
     void testGetNormal() {
-        // Test code for getNormal method should be implemented here.
+        // not implemented because it inherits from Tube class
+
     }
 }

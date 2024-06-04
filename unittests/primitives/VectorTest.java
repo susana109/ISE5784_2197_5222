@@ -39,12 +39,12 @@ class VectorTest {
         Vector v2 = new Vector(-2, -4, -6);
         Vector v3 = new Vector(0, 3, -2);
         // ============ Equivalence Partitions Tests ==============
-        // TC01: Test if dot product of orthogonal vectors is zero
+        // TC03: Test if dot product of orthogonal vectors is zero
         assertEquals(0.0,
                 v1.dotProduct(v3),
                 0.001,
                 "ERROR: dotProduct() for orthogonal vectors is not zero");
-        // TC02: Test that value of dot-product is proper
+        // TC04: Test that value of dot-product is proper
         assertEquals(-28,
                 v1.dotProduct(v2),
                 0.01, "ERROR: dotProduct() wrong value");

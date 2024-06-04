@@ -14,7 +14,7 @@ class PlaneTest {
      */
     @Test
     void testGetNormal() {
-        // Test code for getNormal method should be implemented here.
+       
     }
 
     /**
@@ -30,10 +30,10 @@ class PlaneTest {
         Plane pl = new Plane(p1, p2, p3);
         Vector result = pl.getNormal(p1);
 
-        // Ensure |result| = 1
+        // TC01:Ensure |result| = 1
         assertEquals(1, result.length(), DELTA, "Plane's normal is not a unit vector");
 
-        // Ensure the result is orthogonal to the vector director of the plane
+        // TC02:Ensure the result is orthogonal to the vector director of the plane
         Vector vd = p1.subtract(p2);
         assertEquals(0, vd.dotProduct(result), DELTA,
                 "Plane's normal is not orthogonal to the vector director of the plane");

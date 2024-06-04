@@ -11,6 +11,6 @@ class GeometryTest {
      */
     @Test
     void getNormal() {
-        // Test code for getNormal method should be implemented here.
+        // Test code for getNormal method not implemented here because it is an interface.
     }
 }

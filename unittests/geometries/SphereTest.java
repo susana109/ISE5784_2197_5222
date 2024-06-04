@@ -27,9 +27,9 @@ class SphereTest {
         Point p2 = new Point(2, 0, 1);
         Sphere sphere = new Sphere(p1, 2);
         Vector result = sphere.getNormal(p1);
-        // ensure |result| = 1
+        // TC01:ensure |result| = 1
         assertEquals(1, result.length(), DELTA, "Sphere's normal is not a unit vector");
-        // ensure the result is orthogonal to the radius vector
+        //TC02: ensure the result is orthogonal to the radius vector
         Vector vd = p2.subtract(p1);
         assertEquals(0, vd.dotProduct(result), DELTA, "Sphere's normal is not orthogonal to the sphere");
     }
