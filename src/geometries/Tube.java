@@ -2,6 +2,8 @@ package geometries;
 
 import primitives.*;
 
+import static primitives.Util.isZero;
+
 /**
  * The Tube class represents a tube in 3D space.
  * A tube is defined by a central axis (a Ray) and a radius.
@@ -28,6 +30,25 @@ public class Tube extends RadialGeometry {
      * @param point the point on the tube
      * @return the normal vector at the given point
      */
+
+    /**public Vector getNormal(Point3D p) {
+        //The vector from the point of the cylinder to the given point
+        Point3D o = _axisRay.get_p();
+        Vector v = _axisRay.get_dir();
+
+        Vector vector1 = p.subtract(o);
+
+        //We need the projection to multiply the _direction unit vector
+        double projection = vector1.dotProduct(v);
+        if (!isZero(projection)) {
+            // projection of P-O on the ray:
+            o.add(v.scale(projection));
+        }
+
+        //This vector is orthogonal to the _direction vector.
+        Vector check = p.subtract(o);
+        return check.normalize();
+    }*/
     public Vector getNormal(Point point) {
         // Get the point on the axis (projection of the point onto the axis)
         Point p0 = axis.getHead();
@@ -35,15 +56,19 @@ public class Tube extends RadialGeometry {
 
         // Calculate t such that the projection of the point onto the axis is p0 + t * v
         Vector p0ToPoint = point.subtract(p0);
-        double t = v.dotProduct(p0ToPoint);
+
+        double projection = p0ToPoint.dotProduct(v);
 
         // Calculate the closest point on the axis
-        Point o = p0.add(v.scale(t));
+        if (!isZero(projection)) {
+            // projection of P-O on the ray:
+            p0.add(v.scale(projection));
+        }
+        //Point o = v.add(v.scale(t));
 
         // Calculate the normal vector
-        Vector normal = point.subtract(o).normalize();
+        return point.subtract(p0).normalize();
 
-        return normal;
     }
 }
 
