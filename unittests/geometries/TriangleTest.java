@@ -1,5 +1,6 @@
 package geometries;
 
+import org.junit.jupiter.api.Test;
 import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,9 +14,9 @@ class TriangleTest {
     private final double DELTA = 0.000001;
 
     /**
-     * Test method for {@link geometries.Triangle#getNormal(primitives.Point)}.
+     * Test method for {@link Triangle#getNormal(Point)}.
      */
-    @org.junit.jupiter.api.Test
+    @Test
     void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         Point p1 = new Point(0, 0, 0);

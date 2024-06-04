@@ -32,8 +32,17 @@ public class Tube extends RadialGeometry {
      */
 
     public Vector getNormal(Point point) {
+        Point p0= this.axis.getHead();
+        Vector v=point.subtract(p0);
+        double t=(this.axis.getDirection()).dotProduct(v);
+        Point O=p0.add((this.axis.getDirection()).scale(t));
+        Vector normal=(point.subtract(O)).normalize();
+        return normal;
+
+
+
         // Get the point on the axis (projection of the point onto the axis)
-        Point p0 = axis.getHead();
+       /* Point p0 = axis.getHead();
         Vector v = axis.getDirection();
 
         // Calculate t such that the projection of the point onto the axis is p0 + t * v
@@ -42,14 +51,15 @@ public class Tube extends RadialGeometry {
         double projection = p0ToPoint.dotProduct(v);
 
         // Calculate the closest point on the axis
-        if (!isZero(projection)) {
+
+
             // projection of P-O on the ray:
-            p0.add(v.scale(projection));
-        }
+           Point p1 = p0.add(v.scale(projection));
+
         //Point o = v.add(v.scale(t));
 
         // Calculate the normal vector
-        return point.subtract(p0).normalize();
+        return point.subtract(p1).normalize();*/
 
     }
 }
