@@ -1,5 +1,6 @@
 package primitives;
-
+import static primitives.Util.isZero;
+import java.util.Objects;
 /**
  * Class Ray is the basic class representing a fundamental object
  * in geometry. It is the collection of all the points on one side of
@@ -57,6 +58,9 @@ public class Ray {
 
     public Vector getDirection() {
         return direction;
+    }
+    public Point getTargetPoint(double length) {
+        return isZero(length ) ? head : head.add(direction.scale(length));
     }
 }
 

@@ -48,16 +48,4 @@ class PlaneTest {
         Vector vd2 = p1.subtract(p3);
         assertNotEquals(0, vd1.dotProduct(vd2), DELTA, "ERROR: The points are all on the same line");
     }
-
-    @Test
-    void testTestGetNormal1() {
-    }
-
-    @Test
-    void testTestGetNormal2() {
-    }
-
-    @Test
-    void testFindIntersection() {
-    }
 }

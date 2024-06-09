@@ -82,7 +82,7 @@ class PointTest {
 
         // =============== Boundary Values Tests ==================
         // Check if subtracting a point from itself throws an IllegalArgumentException
-         assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
+        assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
                 "ERROR: (point - itself) does not throw an exception");
     }
 }

@@ -127,4 +127,3 @@ public class Vector extends Point {
         return new Vector(x, y, z);
     }
 }
-
