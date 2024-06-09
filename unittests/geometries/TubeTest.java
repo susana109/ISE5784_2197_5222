@@ -2,14 +2,15 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;/**
 
 /**
  * Testing Tubes
  */
 class TubeTest {
     /**
-     * Delta value for accuracy when comparing the numbers of type 'double' in assertEquals
+     * Delta value for accuracy when comparing the numbers of type 'double' in
+     * assertEquals
      */
     private final double DELTA = 0.000001;
 
@@ -44,7 +45,7 @@ class TubeTest {
 
         Point p = new Point(1, 0, 0);
 
-     /*   assertEquals(new Vector(1,0,-1),tube.getNormal(p),
-                "Error:Tube's normal is not orthogonal to the tube's axis");*/
+       assertEquals(new Vector(1,0,-1),tube.getNormal(p),
+                "Error:Tube's normal is not orthogonal to the tube's axis");
     }
 }

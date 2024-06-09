@@ -1,6 +1,6 @@
 package geometries;
 import primitives .*;
-
+import static primitives.Util.alignZero;
 import java.util.List;
 
 /**
@@ -35,9 +35,52 @@ public class Sphere extends RadialGeometry {
         return normal.normalize();
     }
 
-    @Override
-    public List<Point> findIntersections(Ray ray) {
-        return null;
+
+        /**
+         * calculates the points of the intersections with the given ray to the sphere
+         * @param ray Ray which should intersect with the sphere
+         * @return List Point3D which should return null on none point, or list of points that intersect the sphere
+         */
+        @Override
+        public List<Point> findIntersections(Ray ray) {
+            Point p0 = ray.getHead();
+            Vector v = ray.getDirection();
+            Vector u;
+            try {
+                //calculates the vector from the head of the ray to the center of the sphere
+                u = (this.center).subtract(p0);
+                //if p0 is equal to the center of the sphere, it throws an exception
+                //it returns only one intersection point (radius distance from p0)
+            } catch (IllegalArgumentException e) {
+                return List.of(ray.getTargetPoint(this.radius));
+            }
+            //calculates tm the projection of u on v (alignZero is used for accuracy)
+            double tm = alignZero(v.dotProduct(u));
+            //calculates the distance squared of p0 from the center of the sphere
+            //if tm=0, v is orthogonal to u
+            //if not, calculates dsquared with the Pythagore's theorem
+            double dSquared = (tm == 0) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
+            //calculates the squared distance from tm to the sphere
+            double thSquared = alignZero(this.radius *this.radius - dSquared);
+            //if it's negative , there is no intersection point
+            if (thSquared <= 0) return null;
+
+            double th = alignZero(Math.sqrt(thSquared));//distances to the intersection points
+            if (th == 0) return null;// the ray is tangent to the sphere
+          //distances of intersection points on the rat
+            double t1 = alignZero(tm - th);
+            double t2 = alignZero(tm + th);
+            //if the points are before the head of the ray there is no intersection points
+            if (t1 <= 0 && t2 <= 0) return null;
+            //if the points are after the head of the ray it returns the points
+            if (t1 > 0 && t2 > 0) return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2)); //P1 , P2
+            if (t1 > 0)
+                return List.of(ray.getTargetPoint(t1));
+            else
+                return List.of(ray.getTargetPoint(t2));
+        }
     }
+
+}
 }
 
