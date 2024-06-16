@@ -5,6 +5,7 @@ import java.util.List;
 import static primitives.Util.isZero;
 
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 /**

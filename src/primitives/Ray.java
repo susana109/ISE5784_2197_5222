@@ -1,7 +1,13 @@
 package primitives;
 import static primitives.Util.isZero;
 import java.util.Objects;
+
 /**
+public class Ray {
+}
+
+//import static primitives.Util.isZero;
+
  * Class Ray is the basic class representing a fundamental object
  * in geometry. It is the collection of all the points on one side of
  * a line in one direction starting from a single point on the line.
@@ -9,9 +15,9 @@ import java.util.Objects;
  * @author Ariella Boukoubza and Bitya Susana
  */
 
-import primitives.*;
 
-import java.util.Objects;
+
+
 
 public class Ray {
     private final Point head;
@@ -56,11 +62,24 @@ public class Ray {
         return head;
     }
 
-    public Vector getDirection() {
-        return direction;
-    }
-    public Point getTargetPoint(double length) {
-        return isZero(length ) ? head : head.add(direction.scale(length));
-    }
+
+    /**
+     * get point
+     * @param length length
+     * @return Point Point
+     */
+
 }
+
+public Vector getDirection() {
+    return direction;
+}
+public Point getPoint(double length) {
+    return isZero(length ) ? head : head.add(direction.scale(length));
+}
+}
+
+
+
+//mq raytest et refactor
 

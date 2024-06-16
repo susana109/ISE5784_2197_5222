@@ -4,6 +4,7 @@ package geometries;
 import primitives.Point;
 import primitives.Ray;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,17 @@ public class Geometries implements Intersectable{
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        List<Point> intersections = null;
+
+        for (Intersectable geo : geometries) {
+            List<Point> tempIntersections = geo.findIntersections(ray);
+            if (tempIntersections != null) {
+                if (intersections == null)
+                    intersections = new ArrayList<Point>();
+                intersections.addAll(tempIntersections);
+            }
+        }
+        return intersections;
     }
 
 }
