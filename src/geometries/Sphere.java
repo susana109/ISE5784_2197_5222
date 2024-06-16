@@ -52,7 +52,7 @@ public class Sphere extends RadialGeometry {
                 //if p0 is equal to the center of the sphere, it throws an exception
                 //it returns only one intersection point (radius distance from p0)
             } catch (IllegalArgumentException e) {
-                return List.of(ray.getTargetPoint(this.radius));
+                return List.of(ray.getPoint(this.radius));
             }
             //calculates tm the projection of u on v (alignZero is used for accuracy)
             double tm = alignZero(v.dotProduct(u));
@@ -67,20 +67,20 @@ public class Sphere extends RadialGeometry {
 
             double th = alignZero(Math.sqrt(thSquared));//distances to the intersection points
             if (th == 0) return null;// the ray is tangent to the sphere
-          //distances of intersection points on the rat
+          //distances of intersection points on the ray
             double t1 = alignZero(tm - th);
             double t2 = alignZero(tm + th);
             //if the points are before the head of the ray there is no intersection points
             if (t1 <= 0 && t2 <= 0) return null;
             //if the points are after the head of the ray it returns the points
-            if (t1 > 0 && t2 > 0) return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2)); //P1 , P2
+            if (t1 > 0 && t2 > 0) return List.of(ray.getPoint(t1), ray.getPoint(t2)); //P1 , P2
             if (t1 > 0)
-                return List.of(ray.getTargetPoint(t1));
+                return List.of(ray.getPoint(t1));
             else
-                return List.of(ray.getTargetPoint(t2));
+                return List.of(ray.getPoint(t2));
         }
     }
 
-}
-}
+
+
 

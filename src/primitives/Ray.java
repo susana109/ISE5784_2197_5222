@@ -59,7 +59,13 @@ public class Ray {
     public Vector getDirection() {
         return direction;
     }
-    public Point getTargetPoint(double length) {
+
+    /**
+     * this method calculates the points on the ray which intersects the geometry
+     * @param length
+     * @return Point
+     */
+    public Point getPoint(double length) {
         return isZero(length ) ? head : head.add(direction.scale(length));
     }
 }
