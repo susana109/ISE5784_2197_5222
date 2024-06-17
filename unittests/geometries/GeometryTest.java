@@ -10,7 +10,7 @@ class GeometryTest {
      * Test method for {@link geometries.Geometry#getNormal(primitives.Point)}.
      */
     @Test
-    void getNormal() {
+    void getNormal() {//ok
         // Test code for getNormal method should be implemented here.
     }
 }

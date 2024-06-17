@@ -3,7 +3,7 @@ package primitives;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 
-class PointTest {
+class PointTest {//ok
 
     public static final double DELTA = 0.00001;
 

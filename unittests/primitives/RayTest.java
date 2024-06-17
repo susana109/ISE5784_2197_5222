@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RayTest {
 
     @Test
-    void getPoint() {
+    void getPoint() {//ok
         Point p1= new Point(1,0,0);
         Vector v1 = new Vector(1,0,0);
         Ray r1 = new Ray(p1,v1);

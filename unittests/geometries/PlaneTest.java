@@ -17,7 +17,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#getNormal(primitives.Point)}.
      */
     @Test
-    void testGetNormal() {
+    void testGetNormal() {//ok
         // ============ Equivalence Partitions Tests ==============
         Point p1 = new Point(0, 0, 1);
         Point p2 = new Point(1, 0, 0);
@@ -44,7 +44,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}.
      */
     @Test
-    void testFindIntersections() {
+    void testFindIntersections() {//ok
         Plane p = new Plane(new Point(1, 0, 0), new Point(0, 1, 0), new Point(0, 0, 1));
 
         // ============ Equivalence Partitions Tests ==============

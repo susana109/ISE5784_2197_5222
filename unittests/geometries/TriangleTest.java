@@ -20,7 +20,7 @@ class TriangleTest {
      * Test method for {@link Triangle#getNormal(Point)}.
      */
     @Test
-    void testGetNormal() {
+    void testGetNormal() {//ok
         // ============ Equivalence Partitions Tests ==============
         Point p1 = new Point(0, 0, 0);
         Point p2 = new Point(1, 0, 0);
@@ -38,16 +38,16 @@ class TriangleTest {
      * findIntersections
      */
     @Test
-    public void findIntersections() {
+    public void findIntersections() {//ok
         //Triangle t = new Triangle(new Point3D(2,0,0),new Point3D(0,0,2),new Point3D(0,2,0));
         Triangle t = new Triangle(new Point(0,2,0),new Point(0,0,2),new Point(2,0,0));
-        //EP - Ray intersect triangle in the middle
+        //EP - Ray intersects triangle in the middle
         Ray r1 = new Ray(new Point(3.03,3.26,0), new Vector(-2.71,-2.59,1.01).normalize());
 
 
         List<Point> intersection = t.findIntersections(r1);
 
-        assertEquals(Float.parseFloat("Error, no intersection with ray inside triangle"), 1, intersection.size());
+        assertEquals( 1, intersection.size(),"Error, no intersection with ray inside triangle");
 
         //EP - Ray no intersect triangle - outside edge
         Ray r2 = new Ray(new Point(-1,-2,1), new Vector(3,10,3).normalize());
@@ -66,15 +66,16 @@ class TriangleTest {
 
 
 
-        /***VBA***/
+        /***BVA***/
 
-        //VBA - no intersection with ray on edge triangle
+        //BVA - no intersection with ray on edge triangle
         Ray r4 = new Ray(new Point(2.57, 2.48, 0), new Vector(1.14,0,0.86).normalize());
 
-        List<Point> no_intersections3 = t.findIntersections(r4);
+        List<Point> noIntersections3 = t.findIntersections(r4);
 
 
-        assertEquals(null, no_intersections3, "Error, intersection with ray on edge triangle");
+
+        assertEquals(null, noIntersections3, "Error, intersection with ray on edge triangle");
 
         //VBA  - no intersection with ray on vertex triangle
         Ray r5 = new Ray(new Point(3.53,1.25,0), new Vector(2,0,0).normalize());
