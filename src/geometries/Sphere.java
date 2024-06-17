@@ -1,50 +1,47 @@
 package geometries;
+import primitives .*;
+import static primitives.Util.alignZero;
+import java.util.List;
 
-//import org.junit.jupiter.api.Test;
-import org.junit.Test;
-import primitives.*;
+public class Sphere extends RadialGeometry{
+    private final Point center;
 
-import java.util.Arrays;
+    public Sphere(Point center, double radius){
+        super(radius);
+        this.center = center;
+}
 
-import static org.junit.Assert.assertEquals;
-//import static org.junit.jupiter.api.Assertions.*;
-
-/**
- * Testing Tubes
- */
-class TubeTest {
-    /**
-     * Delta value for accuracy when comparing the numbers of type 'double' in assertEquals
-     */
-    private final double DELTA = 0.000001;
-
-    /**
-     * Test method for {@link geometries.Tube#getNormal(primitives.Point)}.
-     */
-    @Test
-    public void testGetNormal() {
-        // ============ Equivalence Partitions Tests ==============
-
-        Ray ray = new Ray(new Point(0, 0, 0), new Vector(0, 0, 1));
-        Tube tube = new Tube(ray, 40);
-        Point point = new Point(1, 0, 2);
-        Vector tNormal = tube.getNormal(point);
-
-        // Ensure the normal is as expected
-        assertEquals(Arrays.toString(new Vector[]{new Vector(1, 0, 0)}), tNormal, "Error: Tube getNormal not returning correct value");
-
-        // Ensure |result| = 1
-        assertEquals(1, new Double[]{tNormal.length()});
-
-        // Ensure the result is orthogonal to the tube's axis
-        assertEquals(0, new Double[]{tNormal.dotProduct(ray.getDirection())});
-
-        // =============== Boundary Values Tests ==================
-        // The point on the tube creates a 90-degree angle to the ray
-        Point p = new Point(1, 0, 0);
-
-        // Corrected the normal vector expected
-        Vector expectedNormal = new Vector(1, 0, 0);
-        assertEquals("Error: Tube's normal is not correct for the given point", expectedNormal, tube.getNormal(p));
+public Vector getNormal(Point point){
+    Vector normal = point.subtract(center);
+    return normal.normalize();
     }
+
+@Override
+public List<Point> findIntersections(Ray ray) {
+    Point p0 = ray.getHead();
+    Vector v = ray.getDirection();
+    Vector u;
+    try {
+        u = (this.center).subtract(p0); // p0 == _center
+    } catch (IllegalArgumentException e) {
+        return List.of(ray.getPoint(radius));
+    }
+    double tm = alignZero(v.dotProduct(u));
+    double dSquared = (tm == 0) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
+    double thSquared = alignZero(radius * radius - dSquared);
+
+    if (thSquared <= 0) return null;
+
+    double th = alignZero(Math.sqrt(thSquared));
+    if (th == 0) return null;
+
+    double t1 = alignZero(tm - th);
+    double t2 = alignZero(tm + th);
+    if (t1 <= 0 && t2 <= 0) return null;
+    if (t1 > 0 && t2 > 0) return List.of(ray.getPoint(t1), ray.getPoint(t2)); //P1 , P2
+    if (t1 > 0)
+        return List.of(ray.getPoint(t1));
+    else
+        return List.of(ray.getPoint(t2));
+}
 }
