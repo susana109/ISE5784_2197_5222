@@ -45,7 +45,7 @@ class TubeTest {
 
         Point p = new Point(1, 0, 0);
 
-      // assertEquals(new Vector(1,0,-1),tube.getNormal(p),
-                //"Error:Tube's normal is not orthogonal to the tube's axis");
+        assertThrows(IllegalArgumentException.class, () -> tube.getNormal(p).dotProduct(new Vector(0, 0, 1)),
+                "Error:Tube's normal is not orthogonal to the tube's axis");
     }
 }

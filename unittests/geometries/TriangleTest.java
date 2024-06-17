@@ -54,7 +54,7 @@ class TriangleTest {
 
         List<Point> no_intersections1 = t.findIntersections(r2);
 
-        assertEquals(null, no_intersections1, "Error, intersection with ray outside triangle with edge");
+        assertNull( no_intersections1, "Error, intersection with ray outside triangle with edge");
 
 
         //EP - Ray no intersect triangle - outside vertex
@@ -62,7 +62,7 @@ class TriangleTest {
 
         List<Point> no_intersections2 = t.findIntersections(r3);
 
-        assertEquals(null, no_intersections2, "Error, intersection with ray outside triangle with vertex");
+        assertNull( no_intersections2, "Error, intersection with ray outside triangle with vertex");
 
 
 
@@ -75,14 +75,14 @@ class TriangleTest {
 
 
 
-        assertEquals(null, noIntersections3, "Error, intersection with ray on edge triangle");
+        assertNull( noIntersections3, "Error, intersection with ray on edge triangle");
 
         //VBA  - no intersection with ray on vertex triangle
         Ray r5 = new Ray(new Point(3.53,1.25,0), new Vector(2,0,0).normalize());
 
         List<Point> no_intersections4 = t.findIntersections(r5);
 
-        assertEquals(null, no_intersections4, "Error, intersection with ray on vertex triangle");
+        assertNull( no_intersections4, "Error, intersection with ray on vertex triangle");
 
         //VBA - no intersect, ray outside triangle, continue of edge..
         Ray r6 = new Ray(new Point(3.46,1.65,0), new Vector(0, -0.5, 2.5).normalize());
@@ -90,7 +90,7 @@ class TriangleTest {
 
         List<Point> no_intersections5 = t.findIntersections(r6);
 
-        assertEquals(null, no_intersections5, "Error, intersection with ray outside triangle continues edge");
+        assertNull( no_intersections5, "Error, intersection with ray outside triangle continues edge");
 
     }
 }

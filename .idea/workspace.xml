@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="debut etape 3">
+    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="fin etape 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/RadialGeometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/RadialGeometryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/PointTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/VectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +127,7 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.TubeTest.testGetNormal">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ISE5784_2197_5222" />
@@ -148,21 +137,6 @@
     </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PointTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="primitives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,6 +205,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TubeTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
+      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -245,18 +235,18 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="JUnit.TubeTest" />
-      <item itemvalue="JUnit.PointTest" />
       <item itemvalue="JUnit.TriangleTest.findIntersections" />
       <item itemvalue="JUnit.TriangleTest.testGetNormal" />
       <item itemvalue="JUnit.SphereTest.testFindIntersections" />
+      <item itemvalue="JUnit.TubeTest.testGetNormal" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TubeTest.testGetNormal" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TriangleTest.findIntersections" />
         <item itemvalue="JUnit.TriangleTest.testGetNormal" />
         <item itemvalue="JUnit.SphereTest.testFindIntersections" />
-        <item itemvalue="JUnit.PointTest" />
       </list>
     </recent_temporary>
   </component>
@@ -280,7 +270,7 @@
       <workItem from="1717485595512" duration="10500000" />
       <workItem from="1717925673750" duration="56000" />
       <workItem from="1718523851292" duration="14098000" />
-      <workItem from="1718618739239" duration="5609000" />
+      <workItem from="1718618739239" duration="6439000" />
     </task>
     <task id="LOCAL-00001" summary="stage 1 project">
       <option name="closed" value="true" />
@@ -402,7 +392,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718618758318</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fin etape 3">
+      <option name="closed" value="true" />
+      <created>1718625661196</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718625661196</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,6 +423,7 @@
     <MESSAGE value="ajout des unittests de geometries" />
     <MESSAGE value="stage 2 project" />
     <MESSAGE value="debut etape 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="debut etape 3" />
+    <MESSAGE value="fin etape 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fin etape 3" />
   </component>
 </project>
