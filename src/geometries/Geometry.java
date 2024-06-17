@@ -1,5 +1,8 @@
 package geometries;
 import primitives .*;
+
+import java.util.List;
+
 /**
  * Geometry interface defines a common behavior for geometric objects.
  * All geometric objects must be able to return the normal vector at a given point.
@@ -13,4 +16,5 @@ public interface Geometry extends Intersectable{
      */
     public Vector getNormal(Point point);
 
+    List<Point> findIntersections(Ray ray);
 }
