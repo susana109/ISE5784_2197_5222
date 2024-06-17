@@ -3,9 +3,10 @@ package geometries;
 import java.util.List;
 
 import static primitives.Util.isZero;
+import static primitives.Util.alignZero;
 
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
+
 
 /**
  * Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
@@ -83,8 +84,35 @@ public class Polygon implements Geometry {
     public Vector getNormal(Point point) { return plane.getNormal(); }
 
 
+    /**
+     * calculate the points of the intersections with the given ray to the polygon
+     * @param ray Ray which should intersect with the plane
+     * @return List  Point3D  which should return null on none point, or list of points that intersect the polygon
+     */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        List<Point> intersections = plane.findIntersections(ray);
+        if (intersections == null) return null;
+
+        Point p0 = ray.getHead();
+        Vector v = ray.getDirection();
+
+        Vector v1  = vertices.get(1).subtract(p0);
+        Vector v2 = vertices.get(0).subtract(p0);
+        double sign = v.dotProduct(v1.crossProduct(v2));
+        if (isZero(sign))
+            return null;
+
+        boolean positive = sign > 0;
+
+        for (int i = vertices.size() - 1; i > 0; --i) {
+            v1 = v2;
+            v2 = vertices.get(i).subtract(p0);
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+            if (isZero(sign)) return null;
+            if (positive != (sign >0)) return null;
+        }
+
+        return intersections;
     }
 }

@@ -6,12 +6,10 @@ import java.util.Objects;
  * in geometry. It is the collection of all the points on one side of
  * a line in one direction starting from a single point on the line.
  * Defined by a point and a direction (unit vector).
- * @author Ariella Boukoubza and Bitya Susana
+ * @author Ariella Boukobza and Bitya Susana
  */
 
-import primitives.*;
 
-import java.util.Objects;
 
 public class Ray {
     private final Point head;
