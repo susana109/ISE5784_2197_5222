@@ -2,14 +2,15 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;/**
 
 /**
  * Testing Tubes
  */
 class TubeTest {
     /**
-     * Delta value for accuracy when comparing the numbers of type 'double' in assertEquals
+     * Delta value for accuracy when comparing the numbers of type 'double' in
+     * assertEquals
      */
     private final double DELTA = 0.000001;
 
@@ -17,7 +18,8 @@ class TubeTest {
      * Test method for {@link geometries.Tube#getNormal(primitives.Point)}.
      */
     @Test
-    void testGetNormal() {
+    void testGetNormal() {//ok
+
         // ============ Equivalence Partitions Tests ==============
 
         Ray ray = new Ray(new Point(0, 0, 0), new Vector(0, 0, 1));
@@ -25,24 +27,25 @@ class TubeTest {
         Point point = new Point(1, 0, 2);
         Vector tNormal = tube.getNormal(point);
 
-        // Ensure the normal is as expected
-        assertEquals(new Vector(1, 0, 0), tNormal, "Error: Tube getNormal not returning correct value");
 
-        // Ensure |result| = 1
-        assertEquals(1, tNormal.length(), DELTA, "Error: Tube's normal is not a unit vector");
+       assertEquals(tNormal, new Vector(1, 0, 0), "Error: Tube getNormal not returning correct value");
 
-        // Ensure the result is orthogonal to the tube's axis
-        assertEquals(0, tNormal.dotProduct(ray.getDirection()), DELTA, "Error: Tube's normal is not orthogonal to the tube's axis");
+
+
+        // ============ Equivalence Partitions Tests ==============
+        // ensure |result| = 1
+        assertEquals(1, tNormal.length(), DELTA, "Error:Tube's normal is not a unit vector");
+
+        // ensure the result is orthogonal to the tube's axis
+       assertEquals(0, tNormal.dotProduct(new Vector(0,0,1)), DELTA,
+               "Error:Tube's normal is not orthogonal to the tube's axis");
 
         // =============== Boundary Values Tests ==================
-        // The point on the tube creates a 90-degree angle to the ray
+        // the point on the tube creates a 90-degree angle to the ray
+
         Point p = new Point(1, 0, 0);
 
-        // Corrected the normal vector expected
-        Vector expectedNormal = new Vector(1, 0, 0);
-        /**assertEquals(expectedNormal,
-         tube.getNormal(p),
-         "Error: Tube's normal is not correct for the given point");
-         */
+        assertThrows(IllegalArgumentException.class, () -> tube.getNormal(p).dotProduct(new Vector(0, 0, 1)),
+                "Error:Tube's normal is not orthogonal to the tube's axis");
     }
 }

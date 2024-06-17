@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Testing RadialGeometry
  */
-class RadialGeometryTest {
+class RadialGeometryTest {//ok
 
     /**
      * Test method for {@link geometries.RadialGeometry#getRadius()}.

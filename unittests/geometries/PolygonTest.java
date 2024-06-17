@@ -22,7 +22,7 @@ public class PolygonTest {
      * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
      */
     @Test
-    public void testConstructor() {
+    public void testConstructor() {//ok
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: Correct concave quadrangular with vertices in correct order
@@ -67,7 +67,7 @@ public class PolygonTest {
      * Test method for {@link geometries.Polygon#getNormal(primitives.Point)}.
      */
     @Test
-    public void testGetNormal() {
+    public void testGetNormal() {//ok
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here - using a quad
         Point[] pts = { new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1) };
