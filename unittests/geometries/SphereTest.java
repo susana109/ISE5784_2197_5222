@@ -40,7 +40,7 @@ class SphereTest {
     private final Vector v001 = new Vector(0, 0, 1);
 
     /**
-     * Test method for {@link Cylinder.Sphere#findIntersections(primitives.Ray)}.
+     * Test for findIntersections
      */
 
 

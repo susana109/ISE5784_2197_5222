@@ -4,7 +4,7 @@ import primitives.*;
 
 import java.util.List;
 
-import static primitives.Util.isZero;
+
 
 /**
  * The Tube class represents a tube in 3D space.
