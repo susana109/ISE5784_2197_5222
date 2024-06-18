@@ -7,14 +7,16 @@ import primitives.*;
  * A cylinder is defined by a central axis (a Ray), a radius, and a height.
  */
 public class Cylinder extends Tube {
-    /** The height of the cylinder */
+    /**
+     * The height of the cylinder
+     */
     private double height;
 
 
     /**
      * Constructs a Cylinder with a given axis, radius, and height.
      *
-     * @param axis the central axis of the cylinder
+     * @param axis   the central axis of the cylinder
      * @param radius the radius of the cylinder
      * @param height the height of the cylinder
      */
@@ -22,6 +24,7 @@ public class Cylinder extends Tube {
         super(axis, radius);
         this.height = height;
     }
+
     /**
      * Returns the normal vector to the cylinder at a given point.
      *
@@ -31,4 +34,5 @@ public class Cylinder extends Tube {
     public Vector getNormal(Point point) {
         return null;
     }
+
 }

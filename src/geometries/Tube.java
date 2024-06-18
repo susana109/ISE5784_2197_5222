@@ -4,7 +4,7 @@ import primitives.*;
 
 import java.util.List;
 
-import static primitives.Util.isZero;
+
 
 /**
  * The Tube class represents a tube in 3D space.
@@ -40,7 +40,6 @@ public class Tube extends RadialGeometry {
         Point O=p0.add((this.axis.getDirection()).scale(t));
         Vector normal=(point.subtract(O)).normalize();
         return normal;
-
 
 
 
