@@ -9,7 +9,7 @@ import primitives.Vector;
 /**
  * Testing Polygons
  *
- * @autor Dan
+ * @author Dan
  */
 public class PolygonTest {
     /**

@@ -1,6 +1,5 @@
 package primitives;
 
-import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PointTest {//ok
