@@ -43,25 +43,6 @@ public class Tube extends RadialGeometry {
 
 
 
-        // Get the point on the axis (projection of the point onto the axis)
-       /* Point p0 = axis.getHead();
-        Vector v = axis.getDirection();
-
-        // Calculate t such that the projection of the point onto the axis is p0 + t * v
-        Vector p0ToPoint = point.subtract(p0);
-
-        double projection = p0ToPoint.dotProduct(v);
-
-        // Calculate the closest point on the axis
-
-
-            // projection of P-O on the ray:
-           Point p1 = p0.add(v.scale(projection));
-
-        //Point o = v.add(v.scale(t));
-
-        // Calculate the normal vector
-        return point.subtract(p1).normalize();*/
 
     }
 
