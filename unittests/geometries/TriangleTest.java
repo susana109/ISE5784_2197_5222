@@ -84,7 +84,7 @@ class TriangleTest {
 
         assertNull( no_intersections4, "Error, intersection with ray on vertex triangle");
 
-        //VBA - no intersect, ray outside triangle, continue of edge..
+        //BVA- no intersect, ray outside triangle, continue of edge
         Ray r6 = new Ray(new Point(3.46,1.65,0), new Vector(0, -0.5, 2.5).normalize());
 
 
