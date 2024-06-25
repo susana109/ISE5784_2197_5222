@@ -3,9 +3,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 
-import java.util.function.ToDoubleFunction;
-import java.util.stream.Collectors.*;
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
