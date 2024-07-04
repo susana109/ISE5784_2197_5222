@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="debut etape 4">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5784_2197_5222.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5784_2197_5222.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-    </list>
+    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,7 +278,7 @@
       <workItem from="1718618739239" duration="6439000" />
       <workItem from="1718865068291" duration="2482000" />
       <workItem from="1719301234977" duration="3412000" />
-      <workItem from="1719998427987" duration="6211000" />
+      <workItem from="1719998427987" duration="6292000" />
     </task>
     <task id="LOCAL-00001" summary="stage 1 project">
       <option name="closed" value="true" />
@@ -437,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718867153887</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="middle step 4">
+      <option name="closed" value="true" />
+      <created>1720015218892</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1720015218892</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,6 +466,7 @@
     <MESSAGE value="debut etape 3" />
     <MESSAGE value="fin etape 3" />
     <MESSAGE value="debut etape 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="debut etape 4" />
+    <MESSAGE value="middle step 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="middle step 4" />
   </component>
 </project>
