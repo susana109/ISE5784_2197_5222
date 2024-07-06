@@ -100,4 +100,7 @@ public class Point {
     public Vector subtract(Point p1) {
         return new Vector(xyz.subtract(p1.xyz));
     }
+    public double getX(){
+        return this.xyz.d1;
+    }
 }
