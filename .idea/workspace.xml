@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="fin etape 3">
-      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,76 +66,86 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.All in ISE5784_2197_5222.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CylinderTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GeometriesTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GeometryTest.getNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PlaneTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PlaneTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PlaneTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointTest.testAdd.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointTest.testDistance.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointTest.testDistanceSquared.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointTest.testSubtract.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolygonTest.testConstructor.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolygonTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RadialGeometryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RayTest.getPoint.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SphereTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SphereTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SphereTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TriangleTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TriangleTest.findIntersections.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TriangleTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Tube.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Tube.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TubeTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TubeTest.testGetNormal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Vector.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VectorTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VectorTest.testAdd.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VectorTest.testCrossProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VectorTest.testNormalize.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.primitives in ISE5784_2197_5222.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.All in ISE5784_2197_5222.executor": "Run",
+    "JUnit.CylinderTest.testGetNormal.executor": "Run",
+    "JUnit.GeometriesTest.testFindIntersections.executor": "Run",
+    "JUnit.GeometryTest.getNormal.executor": "Run",
+    "JUnit.IntegrationTests.executor": "Run",
+    "JUnit.PlaneTest.executor": "Run",
+    "JUnit.PlaneTest.testFindIntersections.executor": "Run",
+    "JUnit.PlaneTest.testGetNormal.executor": "Run",
+    "JUnit.PointTest.executor": "Run",
+    "JUnit.PointTest.testAdd.executor": "Run",
+    "JUnit.PointTest.testDistance.executor": "Run",
+    "JUnit.PointTest.testDistanceSquared.executor": "Run",
+    "JUnit.PointTest.testSubtract.executor": "Run",
+    "JUnit.PolygonTest.testConstructor.executor": "Run",
+    "JUnit.PolygonTest.testGetNormal.executor": "Run",
+    "JUnit.RadialGeometryTest.executor": "Run",
+    "JUnit.RayTest.getPoint.executor": "Run",
+    "JUnit.SphereTest.executor": "Run",
+    "JUnit.SphereTest.testFindIntersections.executor": "Run",
+    "JUnit.SphereTest.testGetNormal.executor": "Run",
+    "JUnit.TriangleTest.executor": "Run",
+    "JUnit.TriangleTest.findIntersections.executor": "Run",
+    "JUnit.TriangleTest.testGetNormal.executor": "Run",
+    "JUnit.Tube.executor": "Run",
+    "JUnit.Tube.test.executor": "Run",
+    "JUnit.TubeTest.executor": "Run",
+    "JUnit.TubeTest.testGetNormal.executor": "Run",
+    "JUnit.Vector.executor": "Run",
+    "JUnit.VectorTest.executor": "Run",
+    "JUnit.VectorTest.testAdd.executor": "Run",
+    "JUnit.VectorTest.testCrossProduct.executor": "Run",
+    "JUnit.VectorTest.testNormalize.executor": "Run",
+    "JUnit.Whole project.executor": "Run",
+    "JUnit.primitives in ISE5784_2197_5222.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Batya/ISE5784_2197_5222/unittests/renderer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="renderer" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Batya\ISE5784_2197_5222\unittests\renderer" />
+      <recent name="C:\Users\Batya\ISE5784_2197_5222\src\renderer" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Batya\ISE5784_2197_5222\src\primitives" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="renderer" />
       <recent name="geometries" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="renderer" />
       <recent name="primitives" />
       <recent name="geometries" />
     </key>
@@ -143,7 +155,7 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TriangleTest">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <method v="2">
@@ -263,14 +275,6 @@
         <item itemvalue="JUnit.All in ISE5784_2197_5222" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -457,5 +461,26 @@
     <MESSAGE value="debut etape 3" />
     <MESSAGE value="fin etape 3" />
     <option name="LAST_COMMIT_MESSAGE" value="fin etape 3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/primitives/RayTest.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/renderer/RenderTests.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ISE5784_2197_5222$TubeTest.ic" NAME="TubeTest Coverage Results" MODIFIED="1719300391999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>geometries.*</FILTER>
+    </SUITE>
   </component>
 </project>
