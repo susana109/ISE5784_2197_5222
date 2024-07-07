@@ -1,6 +1,7 @@
 package primitives;
 import static primitives.Util.isZero;
-import java.util.Objects;
+import java.util.*;
+
 /**
  * Class Ray is the basic class representing a fundamental object
  * in geometry. It is the collection of all the points on one side of
@@ -66,5 +67,35 @@ public class Ray {
     public Point getPoint(double length) {
         return isZero(length ) ? head : head.add(direction.scale(length));
     }
-}
+
+    public Point findClosestPoint (List<Point> points){
+        //The method first checks if the provided list points is null or empty and returns null if it's the case
+            if (points == null || points.isEmpty()) {
+                return null;
+            }
+
+            Point closestPoint = null;
+            //minDistance is initialized to Double.MAX_VALUE, representing the largest possible value for a double.
+            double minDistance = Double.MAX_VALUE;
+
+            for (Point point : points) {
+                //For each point, the method calculates the distance from the ray's head to this point
+                // using the distance method of the Point class.
+                double distance = head.distance(point);
+
+                //The calculated distance is then compared with minDistance. If this distance is smaller than minDistance,
+                // it means this point is the closest one found so far:
+                if (distance < minDistance) {
+                    //minDistance is updated to this new smaller distance.
+                    minDistance = distance;
+                    //closestPoint is updated to the current point.
+                    closestPoint = point;
+                }
+            }
+
+            return closestPoint;
+        }
+
+    }
+
 

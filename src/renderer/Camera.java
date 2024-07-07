@@ -84,7 +84,7 @@ public class Camera implements Cloneable {
                 if (Util.alignZero(camera.width) <= 0) throw new IllegalArgumentException("Width is negative or equals zero") ;
                 if (Util.alignZero(camera.height) <= 0) throw new IllegalArgumentException("Height is negative or equals zero") ;
                 if (Util.alignZero(camera.distance) <= 0) throw new IllegalArgumentException("Distance is negative or equals zero") ;
-                if (!Util.isZero(camera.vRight.dotProduct(camera.vTo))throw new IllegalArgumentException("vRight and vTo are orthogonal");
+                if (!Util.isZero(camera.vRight.dotProduct(camera.vTo)))throw new IllegalArgumentException("vRight and vTo are orthogonal");
                 camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
                 return (Camera) camera.clone();// Cloneable – get a full copy
             
