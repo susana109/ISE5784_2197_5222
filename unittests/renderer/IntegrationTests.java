@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class IntegrationTests {
    @Test
-   public void test(){
+   public void test() {
 
 //verifier si on laisse un seul de chaque forme
 
@@ -20,15 +20,15 @@ public class IntegrationTests {
  */
 
 
-         Camera cam1 = new Camera(Point.ZERO, new Vector(new Point(0,0,1)), new Vector(0,-1,0));
-         Camera cam2 = new Camera(new Point(0,0,-0.5), new Vector(new Point(0,0,1)), new Vector(0,-1,0));
+       Camera cam1 = new Camera(Point.ZERO, new Vector(new Point(0, 0, 1)), new Vector(0, -1, 0));
+       Camera cam2 = new Camera(new Point(0, 0, -0.5), new Vector(new Point(0, 0, 1)), new Vector(0, -1, 0));
 
-         double screenDistance = 1;
-         double screenWidth = 3;
-         double screenHeight = 3;
-         int Nx = 3;
-         int Ny = 3;
-
+       double screenDistance = 1;
+       double screenWidth = 3;
+       double screenHeight = 3;
+       int Nx = 3;
+       int Ny = 3;
+   }
          /**
           * IntegrationSphereTest
           */
@@ -261,7 +261,5 @@ public class IntegrationTests {
 
          }
 
-      }
-
    }
-}
+
