@@ -4,4 +4,8 @@ import java.util.List;
 
 public interface Intersectable {
     List<Point> findIntersections(Ray ray);
+
+    double getDistance();
+
+    Point getPoint();
 }

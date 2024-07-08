@@ -1,4 +1,4 @@
-package renderer;
+package unittests.renderer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import primitives.*;
 import scene.Scene;
+import renderer.*;
+
 
 /**
  * Testing Camera Class
@@ -18,7 +20,7 @@ class CameraTest {
       .setImageWriter(new ImageWriter("Test", 1, 1))
       .setLocation(Point.ZERO)
       .setDirection(new Vector(0, 0, -1), new Vector(0, -1, 0))
-      .setViewPlaneDistance(10);
+      .setVpDistance(10);
 
    /**
     * Test method for
@@ -29,7 +31,7 @@ class CameraTest {
 
       // ============ Equivalence Partitions Tests ==============
       // EP01: 4X4 Inside (1,1)
-      Camera camera1 = cameraBuilder.setViewPlaneSize(8, 8).build();
+      Camera camera1 = cameraBuilder.setVpSize(8, 8).build();
       assertEquals(new Ray(Point.ZERO, new Vector(1, -1, -10)),
                    camera1.constructRay(4, 4, 1, 1), badRay);
 
@@ -43,7 +45,7 @@ class CameraTest {
                    camera1.constructRay(4, 4, 1, 0), badRay);
 
       // BV03: 3X3 Center (1,1)
-      Camera camera2 = cameraBuilder.setViewPlaneSize(6, 6).build();
+      Camera camera2 = cameraBuilder.setVpSize(6, 6).build();
       assertEquals(new Ray(Point.ZERO, new Vector(0, 0, -10)),
                    camera2.constructRay(3, 3, 1, 1), badRay);
 
