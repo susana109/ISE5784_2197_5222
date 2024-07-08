@@ -46,6 +46,6 @@ class RayTest {
         assertEquals(p1, myRay2.findClosestPoint(points), "Wrong closest point");
 
         // TC04:the closest point is the last point in the list
-        assertEquals(p1, myRay3.findClosestPoint(points), "Wrong closest point");
+        assertEquals(p3, myRay3.findClosestPoint(points), "Wrong closest point");
     }
 }

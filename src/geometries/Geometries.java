@@ -4,10 +4,7 @@ package geometries;
 import primitives.Point;
 import primitives.Ray;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.ArrayList;
 
 
@@ -34,16 +31,26 @@ public class Geometries implements Intersectable{
     @Override
     public List<Point> findIntersections(Ray ray) {
         List<Point> intersections = null;
-
-        for (Intersectable geo : geometries) {
-            List<Point> tempIntersections = geo.findIntersections(ray);
-            if (tempIntersections != null) {
+        for (Intersectable geometry : geometries) {
+            var geometryIntersections = geometry.findIntersections(ray);
+            if (geometryIntersections != null) {
                 if (intersections == null)
-                    intersections = new ArrayList<Point>();
-                intersections.addAll(tempIntersections);
+                    intersections = new LinkedList<>(geometryIntersections);
+                else
+                    intersections.addAll(geometryIntersections);
             }
         }
         return intersections;
+    }
+
+    @Override
+    public double getDistance() {
+        return 0;
+    }
+
+    @Override
+    public Point getPoint() {
+        return null;
     }
 
 }

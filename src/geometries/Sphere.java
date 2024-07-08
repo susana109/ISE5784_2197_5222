@@ -92,4 +92,14 @@ public class Sphere extends RadialGeometry {
         else
             return List.of(ray.getPoint(t2));
     }
+
+    @Override
+    public double getDistance() {
+        return 0;
+    }
+
+    @Override
+    public Point getPoint() {
+        return null;
+    }
 }

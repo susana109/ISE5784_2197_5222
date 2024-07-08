@@ -23,7 +23,7 @@ class CameraTest {
       .setVpDistance(10);
 
    /**
-    * Test method for
+    * Test method for constructRay method
     */
    @Test
    void testConstructRay() {
