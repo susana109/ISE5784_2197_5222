@@ -1,8 +1,12 @@
 package scene;
 
 import geometries.Geometries;
+import geometries.Intersectable;
 import lighting.AmbientLight;
 import primitives.Color;
+import primitives.Ray;
+
+import java.util.List;
 
 public class Scene {
 
@@ -30,4 +34,7 @@ public class Scene {
         this.geometries = geometries;
         return this;
     }
+
+
+
 }
