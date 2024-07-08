@@ -13,7 +13,7 @@ import java.util.LinkedList;
 /**
  * represents the camera that creates the rays
  *
- * @author Shulman and Yonatan
+ * @author Bitya and Ariella
  */
 public class Camera {
     //champs
