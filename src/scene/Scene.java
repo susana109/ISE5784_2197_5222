@@ -36,6 +36,5 @@ public class Scene {
     }
 
 
-    public List<Intersectable> findIntersections(Ray ray) {
-    }
+
 }

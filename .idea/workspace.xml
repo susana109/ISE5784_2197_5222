@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +66,13 @@
     "Application.Unnamed.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in ISE5784_2197_5222.executor": "Run",
+    "JUnit.CameraTest.executor": "Run",
     "JUnit.CylinderTest.testGetNormal.executor": "Run",
     "JUnit.GeometriesTest.testFindIntersections.executor": "Run",
     "JUnit.GeometryTest.getNormal.executor": "Run",
-    "JUnit.ImageWriterTest.executor": "Coverage",
+    "JUnit.ImageWriterTest.executor": "Run",
     "JUnit.ImageWriterTest.testWriteToImage.executor": "Debug",
+    "JUnit.IntegrationTests.executor": "Run",
     "JUnit.PlaneTest.executor": "Run",
     "JUnit.PlaneTest.testFindIntersections.executor": "Run",
     "JUnit.PlaneTest.testGetNormal.executor": "Run",
@@ -146,7 +145,7 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ISE5784_2197_5222" />
@@ -478,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720426425555</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="middle step 5">
+      <option name="closed" value="true" />
+      <created>1720433075416</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1720433075416</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
