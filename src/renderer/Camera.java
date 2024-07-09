@@ -50,7 +50,16 @@ public class Camera implements Cloneable {
      */
     private double viewPlaneDistance = 0.0;
 
-    // Rest of the class implementation...
+
+    /**
+     * The image writer used by this camera to write the rendered image.
+     */
+    private ImageWriter imageWriter;
+    // stage5
+    /**
+     * The ray tracer base used by this camera to trace rays and render the scene.
+     */
+    private RayTracerBase rayTracer;
 
     /**
      * Private constructor
@@ -194,10 +203,7 @@ public class Camera implements Cloneable {
          * @return the current Builder object
          * @throws IllegalArgumentException if the provided image writer is null
          */
-        public Builder setImageWriter(ImageWriter imageWriter) {// stage5
-            if (imageWriter == null)
-                throw new IllegalArgumentException("Image writer cannot be null");
-
+        public Builder setImageWriter(ImageWriter imageWriter) {
             camera.imageWriter = imageWriter;
             return this;
         }
@@ -210,10 +216,7 @@ public class Camera implements Cloneable {
          * @return the current Builder object
          * @throws IllegalArgumentException if the provided ray tracer base is null
          */
-        public Builder setRayTracer(RayTraceBase rayTracer) {// stage5
-            if (rayTracer == null)
-                throw new IllegalArgumentException("Ray tracer base cannot be null");
-
+        public Builder setRayTracer(RayTracerBase rayTracer) {
             camera.rayTracer = rayTracer;
             return this;
         }
@@ -328,18 +331,6 @@ public class Camera implements Cloneable {
     }
 
 
-    // stage5
-    /**
-     * The image writer used by this camera to write the rendered image.
-     */
-    private ImageWriter imageWriter;
-    // stage5
-    /**
-     * The ray tracer base used by this camera to trace rays and render the scene.
-     */
-    private RayTraceBase rayTracer;
-
-    // stage5
     /**
      * This method prints a grid pattern onto the image, with specified intervals
      * between grid lines and color for the grid lines.
@@ -372,7 +363,6 @@ public class Camera implements Cloneable {
         return this;
     }
 
-    // stage5
     /**
      * Writes the image to a file using the appropriate method of the image writer.
      */
@@ -386,7 +376,6 @@ public class Camera implements Cloneable {
         imageWriter.writeToImage();
     }
 
-    // stage5
     /**
      * This method performs image rendering by casting rays of light for each pixel
      * in the image and computing their color. It utilizes the image dimensions
@@ -424,3 +413,4 @@ public class Camera implements Cloneable {
     }
 
 }
+

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Scene {
 
-    public Geometries geometries;
+    public Geometries geometries=new Geometries();
     public String Name;
     public Color background=Color.BLACK;
     public AmbientLight ambientLight= AmbientLight.NONE;

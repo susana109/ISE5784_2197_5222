@@ -84,4 +84,14 @@ public class Plane implements Geometry {
 
         return t <= 0 ? null : List.of(ray.getPoint(t));
     }
+
+    @Override
+    public double getDistance() {
+        return 0;
+    }
+
+    @Override
+    public Point getPoint() {
+        return null;
+    }
 }

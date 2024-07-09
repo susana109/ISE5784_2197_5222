@@ -115,4 +115,14 @@ public class Polygon implements Geometry {
 
         return intersections;
     }
+
+    @Override
+    public double getDistance() {
+        return 0;
+    }
+
+    @Override
+    public Point getPoint() {
+        return null;
+    }
 }
