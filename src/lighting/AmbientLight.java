@@ -31,7 +31,7 @@ public class AmbientLight extends Light {
 
     /**
      * Constructs an ambient light source with the specified intensity and ambient
-     * reflection coefficient.
+     * reflection coefficient
      *
      * @param intensity The color intensity of the ambient light.
      * @param kA        The ambient reflection coefficient (ambient reflectivity)
