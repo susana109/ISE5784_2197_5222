@@ -1,65 +1,58 @@
 package geometries;
 
-import primitives.*;
+import primitives.Ray;
+import primitives.Vector;
 
 import java.util.List;
-
-import static primitives.Util.isZero;
+import primitives.Point;
+import static primitives.Util.*;
 
 /**
- * Triangle class represents a triangle in 3D Cartesian coordinate system.
- * It inherits from the Polygon class.
+ * Class Triangle represents a triangle in three-dimensional space.
  */
+public class Triangle extends Polygon {
+    /**
+     * Constructs a Triangle object with three given points.
+     *
+     * @param point1 the first point of the triangle
+     * @param point2 the second point of the triangle
+     * @param point3 the third point of the triangle
+     */
+    public Triangle(Point point1, Point point2, Point point3) {
+        super(point1, point2, point3); // Calls the constructor of the superclass Polygon
+    }
 
-        public class Triangle extends Polygon {
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        // Find intersection points with the plane containing the triangle
+        List<Point> intersectionPoints = plane.findIntersections(ray);
+        // If there are no intersection points with the plane, return null
+        if (intersectionPoints == null)
+            return null;
 
-            /**
-             * Constructs a Triangle with the given vertices.
-             *
-             * @param a the first vertex of the triangle
-             * @param b the second vertex of the triangle
-             * @param c the third vertex of the triangle
-             */
-            public Triangle(Point a, Point b, Point c) {
-                super(a, b, c);
-            }
+        var head = ray.getHead();
+        Vector v = ray.getDirection();
 
-            /**
-             * Finds the intersections of the given ray with the triangle.
-             * This method overrides the method in the Polygon class to provide specific behavior for triangles.
-             *
-             * @param ray the ray to check for intersections with the triangle
-             * @return a list of intersection points if there are any; otherwise, null
-             */
-            @Override
-            public List<Point> findIntersections(Ray ray) {
-                // Find intersections with the plane in which the triangle lies
-                List<Point> intersections = plane.findIntersections(ray);
-                // If there are no intersections with the plane, return null
-                if (intersections == null) return null;
+        // Check if the intersection point lies inside the triangle
+        Vector v1 = vertices.getFirst().subtract(head);
+        Vector v2 = vertices.get(1).subtract(head);
+        Vector n1 = v1.crossProduct(v2).normalize();
+        double sign1 = alignZero(v.dotProduct(n1));
+        if (sign1 == 0)
+            return null;
 
-                // Get the head (origin) and direction of the ray
-                Point p0 = ray.getHead();
-                Vector v = ray.getDirection();
+        Vector v3 = vertices.get(2).subtract(head);
+        Vector n2 = v2.crossProduct(v3).normalize();
+        double sign2 = alignZero(v.dotProduct(n2));
+        if (sign1 * sign2 <= 0)
+            return null;
 
-                // Calculate vectors from the ray origin to each vertex of the triangle
-                Vector v1 = vertices.get(0).subtract(p0);
-                Vector v2 = vertices.get(1).subtract(p0);
-                Vector v3 = vertices.get(2).subtract(p0);
+        Vector n3 = v3.crossProduct(v1).normalize();
+        double sign3 = alignZero(v.dotProduct(n3));
+        if (sign1 * sign3 <= 0)
+            return null;
 
-                // Calculate the dot products
-                double s1 = v.dotProduct(v1.crossProduct(v2));
-                if (isZero(s1)) return null;
-                double s2 = v.dotProduct(v2.crossProduct(v3));
-                if (isZero(s2)) return null;
-                double s3 = v.dotProduct(v3.crossProduct(v1));
-                if (isZero(s3)) return null;
+        return List.of(new GeoPoint(this, intersectionPoints.getFirst()));
+    }
 
-                // Check if the intersection point is inside the triangle
-                return ((s1 > 0 && s2 > 0 && s3 > 0) || (s1 < 0 && s2 < 0 && s3 < 0)) ? intersections : null;
-            }
-        }
-
-
-
-
+}

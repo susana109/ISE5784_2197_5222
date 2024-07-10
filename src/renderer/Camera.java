@@ -1,8 +1,14 @@
 package renderer;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
+
 import java.util.MissingResourceException;
-import static primitives.Util.*;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * Camera class represents a camera in 3D space using the Builder Pattern. The
@@ -63,9 +69,8 @@ public class Camera implements Cloneable {
 
     /**
      * Private constructor
-     *
      */
-    public Camera() {
+    private Camera() {
     }
 
     /**
@@ -98,7 +103,152 @@ public class Camera implements Cloneable {
         if (yi != 0)
             pij = pij.add(vUp.scale(yi));
         Vector Vij = pij.subtract(position);
-        return new Ray(position, Vij.normalize());
+        return new Ray(position, Vij);
+    }
+
+    /**
+     * Retrieves the position of the camera.
+     *
+     * @return The position of the camera.
+     */
+    public Point getPosition() {
+        return position;
+    }
+
+    /**
+     * Retrieves the direction vector towards which the camera is pointing.
+     *
+     * @return The direction vector towards which the camera is pointing.
+     */
+    public Vector getVTo() {
+        return vTo;
+    }
+
+    /**
+     * Retrieves the direction vector representing the up direction of the camera.
+     *
+     * @return The direction vector representing the up direction of the camera.
+     */
+    public Vector getVUp() {
+        return vUp;
+    }
+
+    /**
+     * Retrieves the direction vector representing the right direction of the
+     * camera.
+     *
+     * @return The direction vector representing the right direction of the camera.
+     */
+    public Vector getVRight() {
+        return vRight;
+    }
+
+    /**
+     * Retrieves the width of the view plane.
+     *
+     * @return The width of the view plane.
+     */
+    public double getViewPlaneWidth() {
+        return viewPlaneWidth;
+    }
+
+    /**
+     * Retrieves the height of the view plane.
+     *
+     * @return The height of the view plane.
+     */
+    public double getViewPlaneHeight() {
+        return viewPlaneHeight;
+    }
+
+    /**
+     * Retrieves the distance from the camera to the view plane.
+     *
+     * @return The distance from the camera to the view plane.
+     */
+    public double getViewPlaneDistance() {
+        return viewPlaneDistance;
+    }
+
+    /**
+     * This method prints a grid pattern onto the image, with specified intervals
+     * between grid lines and color for the grid lines.
+     *
+     * @param interval The interval between grid lines. Must be greater than 0.
+     * @param color    The color of the grid lines.
+     * @return The current state of the camera, for further use within this class or
+     * in closely related classes.
+     * @throws IllegalArgumentException if the interval is not greater than 0.
+     */
+    public Camera printGrid(int interval, Color color) {
+        if (alignZero(interval) <= 0) {
+            throw new IllegalArgumentException("Interval must be greater than 0");
+        }
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+
+        // Loop through the image and draw the grid lines
+        for (int i = 0; i < nX; i += interval) {
+            for (int j = 0; j < nY; j++) {
+                imageWriter.writePixel(i, j, color); // Set the color of the grid line
+            }
+        }
+        for (int j = 0; j < nY; j += interval) {
+            for (int i = 0; i < nX; i++) {
+                imageWriter.writePixel(i, j, color); // Set the color of the grid line
+            }
+
+        }
+        return this;
+    }
+
+    /**
+     * Writes the image to a file using the appropriate method of the image writer.
+     */
+    public void writeToImage() {
+        // Check if image writer is initialized
+        if (imageWriter == null) {
+            throw new IllegalStateException("Image writer is not initialized");
+        }
+
+        // Call the appropriate method of the image writer to write the image
+        imageWriter.writeToImage();
+    }
+
+    /**
+     * This method performs image rendering by casting rays of light for each pixel
+     * in the image and computing their color. It utilizes the image dimensions
+     * provided by the imageWriter object to determine the appropriate number of
+     * rays for each pixel, then invokes the castRay method for each pixel.
+     *
+     * @return The current state of the camera, for further use within this class or
+     * in closely related classes.
+     */
+    public Camera renderImage() {
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+        for (int i = 0; i < nX; ++i)
+            for (int j = 0; j < nY; ++j)
+                castRay(nX, nY, j, i);
+        return this;
+
+    }
+
+    /**
+     * Casts a ray through a specific pixel in the image, computes the color of the
+     * pixel based on the ray-tracing algorithm, and writes the color to the
+     * corresponding pixel in the image.
+     *
+     * @param nX     The width of the image.
+     * @param nY     The height of the image.
+     * @param column The column index of the pixel.
+     * @param row    The row index of the pixel.
+     */
+    private void castRay(int nX, int nY, int column, int row) {
+        Ray ray = constructRay(nX, nY, column, row);
+        Color color = rayTracer.traceRay(ray);
+        imageWriter.writePixel(column, row, color);
+
     }
 
     /**
@@ -110,7 +260,6 @@ public class Camera implements Cloneable {
          * allows for the creation of Camera objects with a fluent interface.
          */
         private final Camera camera;
-
 
 
         /**
@@ -264,152 +413,6 @@ public class Camera implements Cloneable {
                 throw new AssertionError(); // Can't happen
             }
         }
-    }
-
-    /**
-     * Retrieves the position of the camera.
-     *
-     * @return The position of the camera.
-     */
-    public Point getPosition() {
-        return position;
-    }
-
-    /**
-     * Retrieves the direction vector towards which the camera is pointing.
-     *
-     * @return The direction vector towards which the camera is pointing.
-     */
-    public Vector getVTo() {
-        return vTo;
-    }
-
-    /**
-     * Retrieves the direction vector representing the up direction of the camera.
-     *
-     * @return The direction vector representing the up direction of the camera.
-     */
-    public Vector getVUp() {
-        return vUp;
-    }
-
-    /**
-     * Retrieves the direction vector representing the right direction of the
-     * camera.
-     *
-     * @return The direction vector representing the right direction of the camera.
-     */
-    public Vector getVRight() {
-        return vRight;
-    }
-
-    /**
-     * Retrieves the width of the view plane.
-     *
-     * @return The width of the view plane.
-     */
-    public double getViewPlaneWidth() {
-        return viewPlaneWidth;
-    }
-
-    /**
-     * Retrieves the height of the view plane.
-     *
-     * @return The height of the view plane.
-     */
-    public double getViewPlaneHeight() {
-        return viewPlaneHeight;
-    }
-
-    /**
-     * Retrieves the distance from the camera to the view plane.
-     *
-     * @return The distance from the camera to the view plane.
-     */
-    public double getViewPlaneDistance() {
-        return viewPlaneDistance;
-    }
-
-
-    /**
-     * This method prints a grid pattern onto the image, with specified intervals
-     * between grid lines and color for the grid lines.
-     *
-     * @param interval The interval between grid lines. Must be greater than 0.
-     * @param color    The color of the grid lines.
-     * @return The current state of the camera, for further use within this class or
-     *         in closely related classes.
-     * @throws IllegalArgumentException if the interval is not greater than 0.
-     */
-    public Camera printGrid(int interval, Color color) {
-        if (alignZero(interval) <= 0) {
-            throw new IllegalArgumentException("Interval must be greater than 0");
-        }
-        int nX = imageWriter.getNx();
-        int nY = imageWriter.getNy();
-
-        // Loop through the image and draw the grid lines
-        for (int i = 0; i < nX; i += interval) {
-            for (int j = 0; j < nY; j++) {
-                imageWriter.writePixel(i, j, color); // Set the color of the grid line
-            }
-        }
-        for (int j = 0; j < nY; j += interval) {
-            for (int i = 0; i < nX; i++) {
-                imageWriter.writePixel(i, j, color); // Set the color of the grid line
-            }
-
-        }
-        return this;
-    }
-
-    /**
-     * Writes the image to a file using the appropriate method of the image writer.
-     */
-    public void writeToImage() {
-        // Check if image writer is initialized
-        if (imageWriter == null) {
-            throw new IllegalStateException("Image writer is not initialized");
-        }
-
-        // Call the appropriate method of the image writer to write the image
-        imageWriter.writeToImage();
-    }
-
-    /**
-     * This method performs image rendering by casting rays of light for each pixel
-     * in the image and computing their color. It utilizes the image dimensions
-     * provided by the imageWriter object to determine the appropriate number of
-     * rays for each pixel, then invokes the castRay method for each pixel.
-     *
-     * @return The current state of the camera, for further use within this class or
-     *         in closely related classes.
-     */
-    public Camera renderImage() {
-        int nX = imageWriter.getNx();
-        int nY = imageWriter.getNy();
-        for (int i = 0; i < nX; ++i)
-            for (int j = 0; j < nY; ++j)
-                castRay(nX, nY, j, i);
-        return this;
-
-    }
-
-    /**
-     * Casts a ray through a specific pixel in the image, computes the color of the
-     * pixel based on the ray-tracing algorithm, and writes the color to the
-     * corresponding pixel in the image.
-     *
-     * @param nX     The width of the image.
-     * @param nY     The height of the image.
-     * @param column The column index of the pixel.
-     * @param row    The row index of the pixel.
-     */
-    private void castRay(int nX, int nY, int column, int row) {
-        Ray ray = constructRay(nX, nY, column, row);
-        Color color = rayTracer.traceRay(ray);
-        imageWriter.writePixel(column, row, color);
-
     }
 
 }

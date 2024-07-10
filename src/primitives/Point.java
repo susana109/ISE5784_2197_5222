@@ -7,13 +7,18 @@ import java.util.Objects;
  * It is defined by its coordinates in a Double3 object.
  */
 public class Point {
-    /** A constant representing the origin point (0, 0, 0). */
+    /**
+     * A constant representing the origin point (0, 0, 0).
+     */
     public static final Point ZERO = new Point(Double3.ZERO);
-    /** The coordinates of the point. */
+    /**
+     * The coordinates of the point.
+     */
     final protected Double3 xyz;
 
     /**
      * Constructor to initialize a Point object with three coordinates.
+     *
      * @param x the x-coordinate
      * @param y the y-coordinate
      * @param z the z-coordinate
@@ -24,6 +29,7 @@ public class Point {
 
     /**
      * Constructor to initialize a Point object with a Double3 object.
+     *
      * @param xyz the Double3 object representing the coordinates
      */
     public Point(Double3 xyz) {
@@ -32,6 +38,7 @@ public class Point {
 
     /**
      * Checks whether this point is equal to another object.
+     *
      * @param o the object to compare with
      * @return true if the points are equal, false otherwise
      */
@@ -45,6 +52,7 @@ public class Point {
 
     /**
      * Returns the hash code of this point.
+     *
      * @return the hash code
      */
     @Override
@@ -54,6 +62,7 @@ public class Point {
 
     /**
      * Returns a string representation of this point.
+     *
      * @return the string representation
      */
     @Override
@@ -65,6 +74,7 @@ public class Point {
 
     /**
      * Adds a vector to this point and returns the resulting point.
+     *
      * @param v1 the vector to add
      * @return the resulting point
      */
@@ -74,6 +84,7 @@ public class Point {
 
     /**
      * Calculates the squared distance between this point and another point.
+     *
      * @param p1 the other point
      * @return the squared distance
      */
@@ -85,6 +96,7 @@ public class Point {
 
     /**
      * Computes the distance between this point and another point.
+     *
      * @param p1 the other point
      * @return the distance
      */
@@ -94,16 +106,19 @@ public class Point {
 
     /**
      * Subtracts another point from this point and returns the resulting vector.
+     *
      * @param p1 the other point
      * @return the resulting vector
      */
     public Vector subtract(Point p1) {
         return new Vector(xyz.subtract(p1.xyz));
     }
-    public double getX(){
+
+    public double getX() {
         return this.xyz.d1;
     }
-    public double getY(){
+
+    public double getY() {
         return this.xyz.d2;
     }
 }

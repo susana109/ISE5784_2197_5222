@@ -1,101 +1,130 @@
 package primitives;
-import static primitives.Util.isZero;
-import java.util.*;
+
+import geometries.Intersectable.GeoPoint;
+import java.util.List;
 
 /**
- * Class Ray is the basic class representing a fundamental object
- * in geometry. It is the collection of all the points on one side of
- * a line in one direction starting from a single point on the line.
- * Defined by a point and a direction (unit vector).
- * @author Ariella Boukobza and Bitya Susana
+ * Ray class represents a point and a direction vector in 3D space
+ *
+ * @author Avital and Tal
  */
-
-
-
 public class Ray {
+    /** point in ray */
     private final Point head;
+    /** vector direction */
     private final Vector direction;
+    /**
+     * A constant delta value used for numerical approximations or small adjustments
+     */
+    private static final double DELTA = 0.1;
 
     /**
-     *Constructor to initialize a Ray object with a starting point and a direction.
-     *      * The direction vector is normalized.
-     * @param head
-     * @param direction
+     * ray constructor
+     *
+     * @param point  in ray
+     * @param vector in ray
      */
+    public Ray(Point point, Vector vector) {
+        head = point;
+        direction = vector.normalize(); // Ensure vector is normalized
+    }
 
-    public Ray(Point head, Vector direction) {
-        this.head = head;
-        // Normalizing the direction vector
+    /**
+     * ray constructor with offset point
+     *
+     * @param point     in ray
+     * @param direction in ray
+     * @param normal    on plane
+     */
+    public Ray(Point point, Vector direction, Vector normal) {
         this.direction = direction.normalize();
-    }
-
-
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        return (obj instanceof Ray r)
-                && this.head.equals(r.head)
-                && this.direction.equals(r.direction);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(head, direction);
-    }
-
-
-    public String toString() {
-        return "Ray{" +
-                "point=" + head+
-                ", direction=" + direction +
-                '}';
-
+        double nv = normal.dotProduct(this.direction);
+        Vector dltVector = normal.scale(nv < 0 ? -DELTA : DELTA);
+        head = point.add(dltVector);
 
     }
 
+    /**
+     * Returns the head point of the vector.
+     *
+     * @return the head point of the vector
+     */
     public Point getHead() {
         return head;
     }
 
+    /**
+     * Returns the direction vector.
+     *
+     * @return the direction vector
+     */
     public Vector getDirection() {
         return direction;
     }
 
     /**
-     * this method calculates the points on the ray which intersects the geometry
-     * @param length
-     * @return Point
+     * Computes a point on the ray at a given distance from the ray's origin.
+     *
+     * @param t The distance from the ray's origin to the computed point.
+     * @return The computed point on the ray at the specified distance from its
+     *         origin. If t is zero, the method returns the ray's origin point.
      */
-    public Point getPoint(double length) {
-        return isZero(length ) ? head : head.add(direction.scale(length));
+    public Point getPoint(double t) {
+        return Util.isZero(t) ? head : head.add(direction.scale(t));
     }
 
-    public Point findClosestPoint (List<Point> points){
-        //The method first checks if the provided list points is null or empty and returns null if it's the case
-            if (points == null || points.isEmpty()) {
-                return null;
-            }
+    /**
+     * Finds the closest point to the start of the ray from a collection of points.
+     *
+     * @param points The collection of points.
+     * @return The closest point to the start of the ray.
+     */
+    public Point findClosestPoint(List<Point> points) {
+        return points == null || points.isEmpty() ? null
+                : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
+    }
 
-            Point closestPoint = null;
-            //minDistance is initialized to Double.MAX_VALUE, representing the largest possible value for a double.
-            double minDistance = Double.MAX_VALUE;
-
-            for (Point point : points) {
-                //For each point, the method calculates the distance from the ray's head to this point
-                // using the distance method of the Point class.
-                double distance = head.distance(point);
-
-                //The calculated distance is then compared with minDistance. If this distance is smaller than minDistance,
-                // it means this point is the closest one found so far:
-                if (distance < minDistance) {
-                    //minDistance is updated to this new smaller distance.
-                    minDistance = distance;
-                    //closestPoint is updated to the current point.
-                    closestPoint = point;
-                }
-            }
-
-            return closestPoint;
+    /**
+     * Finds the closest GeoPoint to the start of the ray from a collection of
+     * GeoPoints.
+     *
+     * @param intersections The collection of GeoPoints.
+     * @return The closest GeoPoint to the start of the ray.
+     */
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections) {
+        if (intersections == null || intersections.isEmpty()) {
+            return null;
         }
 
+        // Initialize variables to store the closest GeoPoint and its distance
+        GeoPoint closestGeoPoint = null;
+        double closestDistance = Double.POSITIVE_INFINITY;
+
+        // Iterate through the list of GeoPoints
+        for (GeoPoint geoPoint : intersections) {
+            // Calculate the distance between the origin of the ray and the current GeoPoint
+            double distance = head.distance(geoPoint.point);
+
+            // Check if the current GeoPoint is closer than the previous closest GeoPoint
+            if (distance < closestDistance) {
+                closestGeoPoint = geoPoint;
+                closestDistance = distance;
+            }
+        }
+
+        // Return the closest GeoPoint
+        return closestGeoPoint;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        return (obj instanceof Ray other) && this.head.equals(other.head) && this.direction.equals(other.direction);
+    }
 
+    @Override
+    public String toString() {
+        return "Ray:" + head + "->" + direction;
+    }
+}

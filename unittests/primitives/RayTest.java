@@ -1,10 +1,13 @@
 package primitives;
 
-import java.util.*;
-
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class RayTest {
 
@@ -28,9 +31,9 @@ class RayTest {
         Point p1 = new Point(0, 0, 0);
         Point p2 = new Point(3, 3, 3);
         Point p3 = new Point(4, 4, 4);
-        Ray myRay=new Ray(new Point(2,2,2), new Vector(1,1,1));
-        Ray myRay2=new Ray(new Point(-1,-1,-1), new Vector(1,1,1));
-        Ray myRay3=new Ray(new Point(5,5,5), new Vector(1,1,1));
+        Ray myRay = new Ray(new Point(2, 2, 2), new Vector(1, 1, 1));
+        Ray myRay2 = new Ray(new Point(-1, -1, -1), new Vector(1, 1, 1));
+        Ray myRay3 = new Ray(new Point(5, 5, 5), new Vector(1, 1, 1));
         List<Point> points = new ArrayList<Point>(Arrays.asList(p1, p2, p3));
         List<Point> points2 = new ArrayList<>();
 

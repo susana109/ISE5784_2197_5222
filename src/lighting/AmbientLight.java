@@ -3,19 +3,42 @@ package lighting;
 import primitives.Color;
 import primitives.Double3;
 
-public class AmbientLight {
+/**
+ * A class representing Ambient Light.
+ */
+public class AmbientLight extends Light {
 
-    private final Color intensity;
+    /**
+     * Represents an ambient light source with no ambient light effect. The ambient
+     * light color is set to black (no contribution to ambient lighting), and the
+     * ambient light intensity is set to zero. This constant can be used to
+     * represent absence of ambient light in a scene.
+     */
+    public static final AmbientLight NONE = new AmbientLight(new Color(java.awt.Color.BLACK), Double3.ZERO);
 
-   public AmbientLight(Color intensity,Double3 attenuation) {
-       this.intensity=intensity;}
-    public AmbientLight(Color intensity,double attenuation) {
-        this.intensity=intensity;}
+    /**
+     * Constructs an ambient light source with the specified intensity and ambient
+     * reflection coefficient.
+     *
+     * @param intensity The color intensity of the ambient light.
+     * @param kA        The ambient reflection coefficient (ambient reflectivity)
+     *                  represented as a {@code Double3} vector. This coefficient
+     *                  scales the intensity of the ambient light.
+     */
+    public AmbientLight(Color intensity, Double3 kA) {
+        super(intensity.scale(kA));
+    }
 
-    public static final AmbientLight NONE= new AmbientLight(Color.BLACK, Double3.ZERO);
-
-   public Color getIntensity(){
-       return this.intensity;
-   }
-
+    /**
+     * Constructs an ambient light source with the specified intensity and ambient
+     * reflection coefficient.
+     *
+     * @param intensity The color intensity of the ambient light.
+     * @param kA        The ambient reflection coefficient (ambient reflectivity)
+     *                  represented as a scalar value. This coefficient scales the
+     *                  intensity of the ambient light.
+     */
+    public AmbientLight(Color intensity, double kA) {
+        super(intensity.scale(kA));
+    }
 }
