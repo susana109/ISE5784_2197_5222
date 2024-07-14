@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 
-public class Geometries implements Intersectable{
+public class Geometries extends Intersectable{
    private final List<Intersectable> geometries = new LinkedList<Intersectable>();
 
     public Geometries(){

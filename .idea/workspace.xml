@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 5">
-      <change afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="end step 5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTraceBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,8 +68,11 @@
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in ISE5784_2197_5222.executor": "Run",
     "JUnit.CameraTest.executor": "Run",
+    "JUnit.CylinderTest.executor": "Run",
     "JUnit.CylinderTest.testGetNormal.executor": "Run",
+    "JUnit.GeometriesTest.executor": "Run",
     "JUnit.GeometriesTest.testFindIntersections.executor": "Run",
+    "JUnit.GeometryTest.executor": "Run",
     "JUnit.GeometryTest.getNormal.executor": "Run",
     "JUnit.ImageWriterTest.executor": "Run",
     "JUnit.ImageWriterTest.testWriteToImage.executor": "Debug",
@@ -92,6 +85,7 @@
     "JUnit.PointTest.testDistance.executor": "Run",
     "JUnit.PointTest.testDistanceSquared.executor": "Run",
     "JUnit.PointTest.testSubtract.executor": "Run",
+    "JUnit.PolygonTest.executor": "Run",
     "JUnit.PolygonTest.testConstructor.executor": "Run",
     "JUnit.PolygonTest.testGetNormal.executor": "Run",
     "JUnit.RadialGeometryTest.executor": "Run",
@@ -159,7 +153,7 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.IntegrationTests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ISE5784_2197_5222" />
@@ -218,16 +212,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaneTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="unittests.renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTest" />
+      <option name="PACKAGE_NAME" value="unittests.renderer" />
+      <option name="MAIN_CLASS_NAME" value="unittests.renderer.IntegrationTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -266,15 +260,15 @@
       <item itemvalue="JUnit.CylinderTest" />
       <item itemvalue="JUnit.GeometriesTest" />
       <item itemvalue="JUnit.GeometryTest" />
-      <item itemvalue="JUnit.PlaneTest" />
+      <item itemvalue="JUnit.IntegrationTests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IntegrationTests" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CylinderTest" />
         <item itemvalue="JUnit.GeometriesTest" />
         <item itemvalue="JUnit.GeometryTest" />
-        <item itemvalue="JUnit.PlaneTest" />
       </list>
     </recent_temporary>
   </component>
@@ -479,7 +473,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720365101949</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="end step 5">
+      <option name="closed" value="true" />
+      <created>1720467525382</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1720467525382</updated>
+    </task>
+    <task id="LOCAL-00024" summary="end step 5">
+      <option name="closed" value="true" />
+      <created>1720467609666</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1720467609666</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +517,8 @@
     <MESSAGE value="debut etape 4" />
     <MESSAGE value="middle step 4" />
     <MESSAGE value="middle step 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle step 5" />
+    <MESSAGE value="end step 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="end step 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

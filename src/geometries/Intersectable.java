@@ -2,10 +2,17 @@ package geometries;
 import primitives.*;
 import java.util.List;
 
-public interface Intersectable {
-    List<Point> findIntersections(Ray ray);
+public abstract class Intersectable {
+   public List<Point> findIntersections(Ray ray){
+       return null;
+   };
 
-    double getDistance();
+   public double getDistance(){
+       return 0;
+};
 
-    Point getPoint();
+   public Point getPoint(){
+
+       return null;
+   };
 }
