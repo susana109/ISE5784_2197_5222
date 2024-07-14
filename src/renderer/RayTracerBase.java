@@ -1,7 +1,8 @@
 package renderer;
 
+import primitives.Color;
+import primitives.Ray;
 import scene.Scene;
-import primitives.*;
 
 /**
  * Abstract base class for ray tracing algorithms.
@@ -11,6 +12,7 @@ import primitives.*;
 public abstract class RayTracerBase {
 
     protected final Scene scene;
+
     /**
      * Constructs a new RayTracerBase with the specified scene.
      *

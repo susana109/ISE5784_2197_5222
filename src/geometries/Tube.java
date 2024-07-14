@@ -1,63 +1,51 @@
 package geometries;
 
-import primitives.*;
-
 import java.util.List;
 
-
+import primitives.*;
 
 /**
- * The Tube class represents a tube in 3D space.
- * A tube is defined by a central axis (a Ray) and a radius.
+ * Class Tube represents a three-dimensional tube.
  */
 public class Tube extends RadialGeometry {
-    /** The central axis of the tube */
-    protected final Ray axis;
+    /** Axis ray of the tube */
+    protected final Ray axisRay;
 
     /**
-     * Constructs a Tube with a given axis and radius.
+     * Constructs a Tube object with the given radius and axis ray.
      *
-     * @param axis the central axis of the tube
-     * @param radius the radius of the tube
+     * @param radius  the radius of the tube
+     * @param axisRay the axis ray of the tube
      */
-    public Tube(Ray axis, double radius) {
+    public Tube(double radius, Ray axisRay) {
         super(radius);
-        this.axis= axis;
-
+        this.axisRay = axisRay;
     }
 
     /**
-     * Returns the normal vector to the tube at a given point.
+     * Returns the normal vector to the surface of the tube at a given point.
      *
-     * @param point the point on the tube
-     * @return the normal vector at the given point
+     * @param point The point on the surface of the tube
+     * @return The normal vector to the surface of the tube at the given point
      */
-
+    @Override
     public Vector getNormal(Point point) {
-        Point p0= this.axis.getHead();
-        Vector v=point.subtract(p0);
-        double t=(this.axis.getDirection()).dotProduct(v);
-        Point O=p0.add((this.axis.getDirection()).scale(t));
-        Vector normal=(point.subtract(O)).normalize();
-        return normal;
 
+        // Calculate the parameter t along the axis direction
+        double t = axisRay.getDirection().dotProduct(point.subtract(axisRay.getHead()));
 
+        // Calculate the closest point 'O' on the axis to the given point
+        Point o = axisRay.getPoint(t);
 
+        // Return the normalized vector from the closest point on the axis to the given
+        // point
+        return point.subtract(o).normalize();
     }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        // Auto-generated method stub
         return null;
     }
 
-    @Override
-    public double getDistance() {
-        return 0;
-    }
-
-    @Override
-    public Point getPoint() {
-        return null;
-    }
 }
-
