@@ -1,31 +1,40 @@
 package lighting;
+
 import primitives.*;
 
-public class DirectionalLight extends Light implements LightSource{
+public class DirectionalLight extends Light implements LightSource {
+
+    private Vector direction;
 
     /**
-     * Represents a direction vector in three-dimensional space. This vector can be
-     * used to denote the direction of light, movement, or any other directional
-     * quantity.
-     */
-    private Vector direction;
-    /**
-     * Constructs a directional light with the given intensity and direction.
+     * Constructs a DirectionalLight with the specified intensity and direction.
      *
-     * @param intensity The intensity (color) of the light source.
-     * @param direction The direction vector of the light source.
+     * @param intensity the intensity of the light
+     * @param direction the direction of the light
      */
     public DirectionalLight(Color intensity, Vector direction) {
         super(intensity);
         this.direction = direction.normalize();
     }
+
     @Override
     public Color getIntensity(Point p) {
-        return intensity;
+        return getIntensity();
     }
 
     @Override
     public Vector getL(Point p) {
-        return direction; // Directional light shines from infinity towards the scene
+        return direction;
+    }
+
+    /**
+     * Calculates the distance from the current point to the given point.
+     *
+     * @param p the point to calculate the distance to
+     * @return the distance from the current point to the given point
+     */
+    @Override
+    public double getDistance(Point p) {
+        return Double.POSITIVE_INFINITY;
     }
 }

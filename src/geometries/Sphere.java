@@ -1,71 +1,88 @@
 package geometries;
 
+import java.util.List;
+
 import primitives.Point;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
-import java.util.List;
-import static primitives.Util.*;
 
-/**
- * Class Sphere represents a three-dimensional sphere.
- */
 public class Sphere extends RadialGeometry {
-    /** Center point of the sphere */
-    private final Point center;
+
+    final Point center;
 
     /**
-     * Constructs a Sphere object with the given center point and radius.
+     * constructor (using super constructor)
      *
-     * @param center the center point of the sphere
-     * @param radius the radius of the sphere
+     * @param radius
+     * @param center
      */
-    public Sphere(Point center, double radius) {
+    public Sphere(double radius, Point center) {
         super(radius);
         this.center = center;
     }
 
+    /**
+     * getter
+     *
+     * @return Sphere center
+     */
+    public Point getCenter() {
+        return center;
+    }
+
+    /**
+     * getter
+     *
+     * @return Sphere radius
+     */
+    public double getRadius() {
+        return radius;
+    }
+
     @Override
     public Vector getNormal(Point point) {
-        return (point.subtract(center).normalize());
+        return point.subtract(center).normalize();
     }
 
     @Override
-    protected List<Intersectable.GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        // Initialize an empty list to store the intersection GeoPoints
-        // List<GeoPoint> intersections = new ArrayList<>();
-        if (ray.getHead().equals(this.center))
-            return List.of(new Intersectable.GeoPoint(this, ray.getPoint(this.radius)));
-
-        // Calculate the vector from the ray's start point to the center of the sphere
-        Vector u = this.center.subtract(ray.getHead());
-
-        // Calculate the projection of u on the ray's direction vector
-        double tm = u.dotProduct(ray.getDirection());
-        // Calculate the distance from the ray's start point to the closest point to the
-        // sphere's center
-        double dSquared = u.lengthSquared() - tm * tm;
-        double thSquared = this.radiusSquared - dSquared;
-        // If the distance is greater than the sphere's radius, there are no
-        // intersections
-        if (alignZero(thSquared) <= 0)
-            return null; // Return an empty list
-
-        // Calculate the distance from the closest point to the intersection points on
-        // the sphere's surface
-        double th = Math.sqrt(thSquared);
-
-        // Calculate the intersection points. It's always t2 > t1
-        double t2 = tm + th;
-        if (alignZero(t2) <= 0)
-            return null; // both points are behind the ray
-
-        double t1 = tm - th;
-
-        return alignZero(t1) <= 0
-                // Only one intersection point
-                ? List.of(new GeoPoint(this, ray.getPoint(t2)))
-                // Two intersection points
-                : List.of(new GeoPoint(this, ray.getPoint(t1)), new GeoPoint(this, ray.getPoint(t2)));
+    public String toString() {
+        return "Sphere{" + "center=" + center + ", radius=" + radius + '}';
     }
 
+    /**
+     * Finds the intersections of a given ray with the geometry of the object.
+     *
+     * @param  ray  the ray to find intersections with
+     * @return      a list of GeoPoint objects representing the intersections, or null if there are no intersections
+     */
+    @Override
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        double d;
+        double Tm=0;
+        if (center.equals(ray.getPoint())) {
+            d = 0;
+        }
+        else {
+            Vector u = center.subtract(ray.getPoint());
+            Tm = ray.getVector().dotProduct(u);
+            d = Math.sqrt(u.lengthSquared() - Tm * Tm);
+            if (d >= radius) {
+                return null;
+            }
+        }
+        double Th = Math.sqrt(radius * radius - d * d);
+        double t1 = Tm - Th;
+        double t2 = Tm + Th;
+        if (t1 > 0 && t2 > 0 && t1 != t2) {
+            return List.of(new GeoPoint(this,ray.getPoint(t1)),new GeoPoint(this,ray.getPoint(t2)));
+        }
+        if (t1 > 0) {
+            return List.of(new GeoPoint(this,ray.getPoint(t1)));
+        }
+        if (t2 > 0) {
+            return List.of(new GeoPoint(this,ray.getPoint(t2)));
+        }
+        return null;
+    }
 }

@@ -1,58 +1,62 @@
 package geometries;
 
+import java.util.List;
+
+import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.List;
-import primitives.Point;
-import static primitives.Util.*;
-
-/**
- * Class Triangle represents a triangle in three-dimensional space.
- */
 public class Triangle extends Polygon {
     /**
-     * Constructs a Triangle object with three given points.
+     * constructor using at father constructor
      *
-     * @param point1 the first point of the triangle
-     * @param point2 the second point of the triangle
-     * @param point3 the third point of the triangle
+     * @param point1
+     * @param point2
+     * @param point3
      */
     public Triangle(Point point1, Point point2, Point point3) {
-        super(point1, point2, point3); // Calls the constructor of the superclass Polygon
+        super(point1, point2, point3);
     }
-
+    /**
+     * @param ray the ray to find intersections with Triangle
+     * @return the list of intersections
+     */
+    //Barycentric Coordinates
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        // Find intersection points with the plane containing the triangle
-        List<Point> intersectionPoints = plane.findIntersections(ray);
-        // If there are no intersection points with the plane, return null
-        if (intersectionPoints == null)
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List <Point> intersectionList = plane.findIntersections(ray);
+        if(intersectionList == null)
             return null;
-
-        var head = ray.getHead();
-        Vector v = ray.getDirection();
-
-        // Check if the intersection point lies inside the triangle
-        Vector v1 = vertices.getFirst().subtract(head);
-        Vector v2 = vertices.get(1).subtract(head);
-        Vector n1 = v1.crossProduct(v2).normalize();
-        double sign1 = alignZero(v.dotProduct(n1));
-        if (sign1 == 0)
+        Point intersectionPoint = intersectionList.getFirst();
+        Vector v0;
+        Vector v1;
+        Vector v2;
+        try {
+            v0 = vertices.get(1).subtract(vertices.get(0));
+            v1 = vertices.get(2).subtract(vertices.get(0));
+            v2 = intersectionPoint.subtract(vertices.get(0));
+        }
+        catch (IllegalArgumentException e) {
             return null;
+        }
 
-        Vector v3 = vertices.get(2).subtract(head);
-        Vector n2 = v2.crossProduct(v3).normalize();
-        double sign2 = alignZero(v.dotProduct(n2));
-        if (sign1 * sign2 <= 0)
-            return null;
+        double d00 = v0.dotProduct(v0);
+        double d01 = v0.dotProduct(v1);
+        double d11 = v1.dotProduct(v1);
+        double d20 = v2.dotProduct(v0);
+        double d21 = v2.dotProduct(v1);
 
-        Vector n3 = v3.crossProduct(v1).normalize();
-        double sign3 = alignZero(v.dotProduct(n3));
-        if (sign1 * sign3 <= 0)
-            return null;
+        double denom = d00 * d11 - d01 * d01;
 
-        return List.of(new GeoPoint(this, intersectionPoints.getFirst()));
+        double v = (d11 * d20 - d01 * d21) / denom;
+        double w = (d00 * d21 - d01 * d20) / denom;
+        double u = 1.0 - v - w;
+
+        if (v > 0 && w > 0 && u > 0 && v < 1 && w < 1 && u < 1) {
+            return List.of(new GeoPoint(this,intersectionPoint));
+        } else {
+            return null;            // Point is outside the triangle
+
+        }
     }
-
 }

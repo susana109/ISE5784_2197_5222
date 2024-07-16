@@ -1,31 +1,37 @@
 package lighting;
+
 import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 
 /**
- * Interface representing a light source in a scene. A light source has
- * properties to determine its intensity and direction.
+ * LightSource class represents a light source in the scene.
  */
-
 public interface LightSource {
 
-
     /**
-     * Returns the intensity (color) of the light source at a given point in the
-     * scene.
+     * A method to retrieve the intensity color.
      *
-     * @param p The point in the scene.
-     * @return The intensity (color) of the light source at the given point.
+     * @param p        the point at which to calculate the intensity
+     * @return         the intensity color
      */
-    public Color getIntensity(Point p);
+    public Color getIntensity(Point p);//returns light in specified point
 
     /**
-     * Returns the direction vector from the light source to a given point in the
-     * scene. This vector represents the direction in which the light is shining.
+     * Retrieves the vector from the specified point.
      *
-     * @param p The point in the scene.
-     * @return The direction vector from the light source to the given point.
+     * @param  p  the point from which to retrieve the vector
+     * @return    the vector retrieved from the specified point
      */
     public Vector getL(Point p);
+
+
+    /**
+     * Calculates the distance from the current point to the given point.
+     *
+     * @param  point  the point to calculate the distance to
+     * @return    the distance from the current point to the given point
+     */
+    double getDistance(Point point);
+
 }

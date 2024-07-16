@@ -1,105 +1,114 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Util;
-import primitives.Vector;
-
 import java.util.List;
 
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
+import primitives.Util;
+import static primitives.Util.*;
 /**
- * Class Plane represents a flat geometric surface in three-dimensional space.
+ * The Plane class represents a plane in 3D space, defined by a point on the plane and a normal vector.
+ * It implements the Geometry interface.
  */
 public class Plane extends Geometry {
-
-    /** point in plane */
-    private final Point point;
-    /** vector in plane */
-    private final Vector normal;
+    /**
+     * A point on the plane.
+     */
+    Point point;
 
     /**
-     * Constructs a Plane object using three points.
+     * The normal vector of the plane.
+     */
+    Vector normal;
+
+    /**
+     * Constructs a Plane using three points that lie on the plane.
+     * The normal vector is calculated using the cross product of the vectors formed by these points.
      *
-     * <p>
-     * The constructor calculates the normal vector based on the points given, and
-     * stores one of the points as the reference point of the plane.
-     *
-     * @param point1 the first point
-     * @param point2 the second point
-     * @param point3 the third point
+     * @param point1 the first point on the plane
+     * @param point2 the second point on the plane
+     * @param point3 the third point on the plane
+     * @throws IllegalArgumentException if the points are collinear or any two points are the same
      */
     public Plane(Point point1, Point point2, Point point3) {
-        // Calculate the normal vector based on the given points
-        // Implementation pending
-        point = point1; // Store one of the points as the reference point
-        normal = (point2.subtract(point1)).crossProduct(point3.subtract(point1)).normalize(); // Normal vector
-        // calculation pending
-    }
-
-    /**
-     * Constructs a Plane object using a point and a normal vector.
-     *
-     * @param point1  a point on the plane
-     * @param normal1 the normal vector to the plane
-     */
-    public Plane(Point point1, Vector normal1) {
         point = point1;
-
-        // Ensure the normal vector is normalized
-        normal = normal1.normalize();
+        try {
+            normal = point1.subtract(point2).crossProduct(point1.subtract(point3)).normalize();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("The points are collinear or any two points are the same");
+        }
     }
 
     /**
-     * new getNormal
+     * Constructs a Plane using a point on the plane and a normal vector.
      *
-     * @return vector normal
+     * @param point the point on the plane
+     * @param normal the normal vector to the plane
+     */
+    public Plane(Point point, Vector normal) {
+        this.point = point;
+        this.normal = normal.normalize();
+    }
+
+    /**
+     * Returns the point on the plane.
+     *
+     * @return the point on the plane
+     */
+    public Point getPoint() {
+        return point;
+    }
+
+    /**
+     * Returns the normal vector of the plane.
+     *
+     * @return the normal vector of the plane
      */
     public Vector getNormal() {
-        // The normal vector to a plane is constant and can be pre-calculated
         return normal;
     }
 
     /**
-     * Returns the normal vector to the surface of the tube at a given point.
+     * Returns the normal vector of the plane at a given point.
+     * Since the normal vector is constant for a plane, the input point is not used.
      *
-     * @param point The point on the surface of the tube
-     * @return The normal vector to the surface at the given point
+     * @param point the point at which the normal is to be calculated (not used)
+     * @return the normal vector of the plane
      */
     @Override
     public Vector getNormal(Point point) {
         return normal;
     }
 
+    /**
+     * Returns a string representation of the Plane object.
+     *
+     * @return a string representation of the Plane object
+     */
     @Override
-    protected List<Intersectable.GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        // Calculate the denominator of the division for finding the parameter t
-        double denominator = this.normal.dotProduct(ray.getDirection());
-        // If the denominator is close to zero, the ray is parallel to the plane
-        if (Util.isZero(denominator))
-            return null; // Ray is parallel to the plane
-
-        // Calculate the numerator of the division for finding the parameter t
-        Vector p0MinusQ0;
-        try {
-            p0MinusQ0 = point.subtract(ray.getHead());
-        } catch (IllegalArgumentException ignore) {
+    public String toString() {
+        return "Plane{" + "point=" + point + ", normal=" + normal + '}';
+    }
+    /**
+     * Finds the intersections of a given ray with the geometry represented by the class.
+     *
+     * @param  ray  the ray to find intersections with
+     * @return      a list of GeoPoint objects representing the intersections, or null if no intersections found
+     */
+    @Override
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        double numerator = normal.dotProduct(point.subtract(ray.getPoint()));
+        double denominator = normal.dotProduct(ray.getVector());
+        if (isZero(denominator))
+        {
             return null;
         }
-
-        double numerator = this.normal.dotProduct(p0MinusQ0);
-        // Calculate the parameter t
-        double t = Util.alignZero(numerator / denominator);
-
-        // If t is negative, the intersection point is behind the ray's start point
-        if (t < 0)
-            return null;
-
-        // Calculate the intersection point
-        Point intersectionPoint = ray.getPoint(t);
-
-        // Return a list with a single GeoPoint containing this plane and the
-        // intersection point
-        return List.of(new Intersectable.GeoPoint(this, intersectionPoint));
+        double t = alignZero(numerator / denominator);
+        if (t > 0)
+        {
+            return List.of(new GeoPoint(this,ray.getPoint(t)));
+        }
+        return null;
     }
-
 }
