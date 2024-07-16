@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 6" />
+    <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 5">
+      <change afterPath="$PROJECT_DIR$/images/lightSphereDirectional.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightSpherePoint.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightSphereSpot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightSphereSpotSharp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightTrianglesDirectional.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightTrianglesPoint.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightTrianglesSpot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lightTrianglesSpotSharp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/LightsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -60,13 +81,14 @@
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in ISE5784_2197_5222.executor": "Run",
-    "JUnit.CameraTest.executor": "Run",
+    "JUnit.CameraTest.executor": "Debug",
     "JUnit.CylinderTest.testGetNormal.executor": "Run",
     "JUnit.GeometriesTest.testFindIntersections.executor": "Run",
     "JUnit.GeometryTest.getNormal.executor": "Run",
     "JUnit.ImageWriterTest.executor": "Run",
     "JUnit.ImageWriterTest.testWriteToImage.executor": "Debug",
     "JUnit.IntegrationTests.executor": "Run",
+    "JUnit.LightsTests.executor": "Run",
     "JUnit.PlaneTest.executor": "Run",
     "JUnit.PlaneTest.testFindIntersections.executor": "Run",
     "JUnit.PlaneTest.testGetNormal.executor": "Run",
@@ -146,7 +168,7 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ImageWriterTest">
+  <component name="RunManager" selected="JUnit.LightsTests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ISE5784_2197_5222" />
@@ -160,46 +182,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CylinderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeometriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeometryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometryTest" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -215,6 +207,36 @@
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.IntegrationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LightsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -250,18 +272,18 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="JUnit.TubeTest" />
+      <item itemvalue="JUnit.CameraTest" />
+      <item itemvalue="JUnit.IntegrationTests" />
+      <item itemvalue="JUnit.LightsTests" />
       <item itemvalue="JUnit.ImageWriterTest" />
-      <item itemvalue="JUnit.CylinderTest" />
-      <item itemvalue="JUnit.GeometriesTest" />
-      <item itemvalue="JUnit.GeometryTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LightsTests" />
+        <item itemvalue="JUnit.IntegrationTests" />
         <item itemvalue="JUnit.ImageWriterTest" />
+        <item itemvalue="JUnit.CameraTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CylinderTest" />
-        <item itemvalue="JUnit.GeometriesTest" />
-        <item itemvalue="JUnit.GeometryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -458,23 +480,7 @@
       <option name="project" value="LOCAL" />
       <updated>1720365101949</updated>
     </task>
-    <task id="LOCAL-00023" summary="middle step 5">
-      <option name="closed" value="true" />
-      <created>1720622579337</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1720622579337</updated>
-    </task>
-    <task id="LOCAL-00024" summary="middle step 6">
-      <option name="closed" value="true" />
-      <created>1720622605900</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1720622605900</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,8 +508,7 @@
     <MESSAGE value="debut etape 4" />
     <MESSAGE value="middle step 4" />
     <MESSAGE value="middle step 5" />
-    <MESSAGE value="middle step 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle step 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="middle step 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

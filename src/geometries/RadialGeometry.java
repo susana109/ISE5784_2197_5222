@@ -5,11 +5,16 @@ package geometries;
  * Implements the Geometry interface.
  */
 
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
     /**
      * The radius of the geometry
      */
     protected final double radius;
+
+    /**
+     * Radius squared of the geometric body
+     */
+    protected final double radiusSquared;
 
     /**
      * Constructs a RadialGeometry with a given radius.
@@ -19,5 +24,6 @@ public abstract class RadialGeometry implements Geometry {
 
     protected RadialGeometry(double radius) {
         this.radius = radius;
+        radiusSquared = radius * radius;
     }
 }
