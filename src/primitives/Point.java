@@ -1,124 +1,89 @@
 package primitives;
 
-import java.util.Objects;
-
-/**
- * Class Point represents a point in a 3D space.
- * It is defined by its coordinates in a Double3 object.
- */
 public class Point {
-    /**
-     * A constant representing the origin point (0, 0, 0).
-     */
-    public static final Point ZERO = new Point(Double3.ZERO);
-    /**
-     * The coordinates of the point.
-     */
-    final protected Double3 xyz;
+    final Double3 xyz;
+
+    static public final Point ZERO = new Point(Double3.ZERO);
 
     /**
-     * Constructor to initialize a Point object with three coordinates.
+     * constructor with 3 coordinates
      *
-     * @param x the x-coordinate
-     * @param y the y-coordinate
-     * @param z the z-coordinate
+     * @param x coordinate 1
+     * @param y coordinate 2
+     * @param z coordinate 3
      */
     public Point(double x, double y, double z) {
-        xyz = new Double3(x, y, z);
+        this.xyz = new Double3(x, y, z);
     }
 
     /**
-     * Constructor to initialize a Point object with a Double3 object.
+     * simple constructor (gets argument of Double3 that contain 3 coordinates)
      *
-     * @param xyz the Double3 object representing the coordinates
+     * @param xyz contain 3 coordinates
      */
-    public Point(Double3 xyz) {
+    Point(Double3 xyz) {
         this.xyz = xyz;
     }
 
     /**
-     * Checks whether this point is equal to another object.
+     * Getter for x coordinate
      *
-     * @param o the object to compare with
-     * @return true if the points are equal, false otherwise
+     * @return coordinate x
      */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point)) return false;
-        Point point = (Point) o;
-        return Objects.equals(xyz, point.xyz);
+    public double getX() {
+        return xyz.d1;
     }
 
     /**
-     * Returns the hash code of this point.
+     * calculate the subtracting between two points
      *
-     * @return the hash code
+     * @param point other point
+     * @return new vector
      */
-    @Override
-    public int hashCode() {
-        return Objects.hash(xyz);
+    public Vector subtract(Point point) {
+        return new Vector(xyz.subtract(point.xyz));
     }
 
     /**
-     * Returns a string representation of this point.
+     * calculate the adding between point and vector
      *
-     * @return the string representation
+     * @param vec the vector to add
+     * @return new point
      */
+    public Point add(Vector vector) {
+        return new Point(this.xyz.add(vector.xyz));
+    }
+
+    /**
+     * calculate the square length between two points
+     *
+     * @return square length between two points
+     */
+    public double distanceSquared(Point point) {
+        double dx = this.xyz.d1 - point.xyz.d1;
+        double dy = this.xyz.d2 - point.xyz.d2;
+        double dz = this.xyz.d3 - point.xyz.d3;
+        return dx * dx + dy * dy + dz * dz;
+    }
+
+    /**
+     * calculate the length between two points
+     *
+     * @return length between two points
+     */
+    public double distance(Point point) {
+        return Math.sqrt(distanceSquared(point));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        return (obj instanceof Point point) && xyz.equals(point.xyz);
+    }
+
     @Override
     public String toString() {
-        return "Point{" +
-                "xyz=" + xyz +
-                '}';
-    }
-
-    /**
-     * Adds a vector to this point and returns the resulting point.
-     *
-     * @param v1 the vector to add
-     * @return the resulting point
-     */
-    public Point add(Vector v1) {
-        return new Point(xyz.add(v1.xyz));
-    }
-
-    /**
-     * Calculates the squared distance between this point and another point.
-     *
-     * @param p1 the other point
-     * @return the squared distance
-     */
-    public double distanceSquared(Point p1) {
-        return (p1.xyz.d1 - this.xyz.d1) * (p1.xyz.d1 - this.xyz.d1) +
-                (p1.xyz.d2 - this.xyz.d2) * (p1.xyz.d2 - this.xyz.d2) +
-                (p1.xyz.d3 - this.xyz.d3) * (p1.xyz.d3 - this.xyz.d3);
-    }
-
-    /**
-     * Computes the distance between this point and another point.
-     *
-     * @param p1 the other point
-     * @return the distance
-     */
-    public double distance(Point p1) {
-        return Math.sqrt(distanceSquared(p1));
-    }
-
-    /**
-     * Subtracts another point from this point and returns the resulting vector.
-     *
-     * @param p1 the other point
-     * @return the resulting vector
-     */
-    public Vector subtract(Point p1) {
-        return new Vector(xyz.subtract(p1.xyz));
-    }
-
-    public double getX() {
-        return this.xyz.d1;
-    }
-
-    public double getY() {
-        return this.xyz.d2;
+        return "" + this.xyz;
     }
 }

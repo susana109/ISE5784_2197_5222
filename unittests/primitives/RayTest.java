@@ -1,54 +1,77 @@
 package primitives;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.Test;
+import primitives.Ray;
+import primitives.Point;
+import primitives.Vector;
 
 class RayTest {
 
+    /**
+     * Test method for {@link primitives.Ray#getPoint(double)}.
+     */
     @Test
-    void getPoint() {
-        Point p1 = new Point(1, 0, 0);
-        Vector v1 = new Vector(1, 0, 0);
-        Ray r1 = new Ray(p1, v1);
-        // ============ Equivalence Partitions Tests ==============
-        //TC01:Positive distance
-        assertEquals(new Point(4, 0, 0), r1.getPoint(3), "Wrong pont with a positive distance");
-        //TC02:Negative distance
-        assertEquals(new Point(-2, 0, 0), r1.getPoint(-3), "Wrong pont with a negative distance");
+    void testgetPoint() {
+        //Ray initialization.
+        Point p0 = Point.ZERO;
+        Vector dir = new Vector(1, 0, 0);
+        Ray ray = new Ray(p0, dir);
+
+        // ============ Equivalence Partition Test ==============
+        // TC01: t is positive (1).
+        double t = 1;
+        Point result = ray.getPoint(t);
+        Point expected = new Point(1,0,0);
+        assertEquals(expected, result, "The correct point is (1,0,0)");
+        // TC02: t is negative (-1).
+        t = -1;
+        result = ray.getPoint(t);
+        expected = new Point(-1,0,0);
+        assertEquals(expected, result, "The correct point is (-1,0,0)");
         // =============== Boundary Values Tests ==================
-        //TC03:Distance zero(return head of ray)
-        assertEquals(r1.getHead(), r1.getPoint(0), "Wrong pont with a distance of zero");
+        // TC11: t is zero.
+        t = 0;
+        result = ray.getPoint(t);
+        expected = Point.ZERO;
+        assertEquals(expected, result, "The correct point is (0,0,0)");
+
     }
 
-    @Test
-    void findClosestPointTest() { //a tester!!!!!!
-        Point p1 = new Point(0, 0, 0);
-        Point p2 = new Point(3, 3, 3);
-        Point p3 = new Point(4, 4, 4);
-        Ray myRay = new Ray(new Point(2, 2, 2), new Vector(1, 1, 1));
-        Ray myRay2 = new Ray(new Point(-1, -1, -1), new Vector(1, 1, 1));
-        Ray myRay3 = new Ray(new Point(5, 5, 5), new Vector(1, 1, 1));
-        List<Point> points = new ArrayList<Point>(Arrays.asList(p1, p2, p3));
-        List<Point> points2 = new ArrayList<>();
+    void findClosestPoint() {
+
+        List<Point> pointList = new LinkedList<>();
+
+        Point p1 = new Point(1, 1, 1);
+        Point p2 = new Point(2, 2, 2);
+        Point p3 = new Point(3, 3, 3);
+
+        pointList.add(p1);
+        pointList.add(p2);
+        pointList.add(p3);
+
+        Vector vector = new Vector(0, -0.5, 0);
 
         // ============ Equivalence Partitions Tests ==============
-        //TC01:the closest point to the ray’s head is found somewhere in the middle of the list
-        assertEquals(p2, myRay.findClosestPoint(points), "Wrong closest point");
+        //TC01: The closest point is in the middle of the list
+        Ray ray1 = new Ray(new Point(2, 2.5, 2), vector);
+        assertEquals(p2, ray1.findClosestPoint(pointList), "The point in the middle");
 
         // =============== Boundary Values Tests ==================
-        // TC02: the list of points is empty
-        assertNull(myRay.findClosestPoint(points2), "The list of points is empty");
+        //TC10: The closest point is the first point in the list
+        Ray ray2 = new Ray(new Point(1, 1.25, 1), vector);
+        assertEquals(p1, ray2.findClosestPoint(pointList), "The point is the first one");
 
-        // TC03:the closest point is the first point in the list
-        assertEquals(p1, myRay2.findClosestPoint(points), "Wrong closest point");
+        //TC11: The closest point is the last point in the list
+        Ray ray3 = new Ray(new Point(3, 3.5, 3), vector);
+        assertEquals(p3, ray3.findClosestPoint(pointList), "The point is the last one");
 
-        // TC04:the closest point is the last point in the list
-        assertEquals(p3, myRay3.findClosestPoint(points), "Wrong closest point");
+        //TC12: The list is null
+        pointList.clear();
+        assertNull(ray3.findClosestPoint(pointList), "The list is empty");
     }
 }

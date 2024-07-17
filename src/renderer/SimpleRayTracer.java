@@ -100,7 +100,7 @@ public class SimpleRayTracer extends RayTracerBase {
             Vector l = lightSource.getL(point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sign(nv)
-                Double3 ktr = transparency(lightSource, l, n, gp);
+                Double3 ktr = transparency(gp, lightSource, l, n);
                 if (!ktr.product(k).lowerThan(MIN_CALC_COLOR_K)) {
 //                if (unshaded(gp, lightSource, l, n)) {
                     Color iL = lightSource.getIntensity(point).scale(ktr);
