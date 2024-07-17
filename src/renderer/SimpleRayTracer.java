@@ -16,8 +16,8 @@ import static primitives.Util.isZero;
 public class SimpleRayTracer extends RayTracerBase {
 
     private static final double EPS = 0.1;
-    private static final double MIN_CALC_COLOR_K = 0.001;
     private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double MIN_CALC_COLOR_K = 0.001;
     private static final Double3 INITIAL_K = Double3.ONE;
 
     private static final double DELTA = 0.1;
@@ -263,18 +263,18 @@ public class SimpleRayTracer extends RayTracerBase {
      * The method checks whether there is any object shading the light source from a
      * point
      *
-     * @param gp the point with its geometry
-     * @param lightSource light source
+     * @param geoPoint the point with its geometry
+     * @param ls light source
      * @param l  direction from light to the point
      * @param n normal vector from the surface towards the geometry
      *
      * @return accumulated transparency attenuation factor
      */
 
-    private Double3 transparency(LightSource lightSource, Vector l, Vector n, GeoPoint gp) {
+    private Double3 transparency(GeoPoint geoPoint, LightSource ls, Vector l, Vector n) {
         // Pay attention to your method of distance screening
         Vector lightDirection = l.scale(-1); // from point to light source
-        Point point = gp.point;
+        Point point = geoPoint.point;
         Ray lightRay = new Ray(point, n, lightDirection);
 
         //double maxdistance = lightSource.getDistance(point);
