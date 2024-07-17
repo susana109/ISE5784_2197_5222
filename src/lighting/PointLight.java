@@ -1,100 +1,88 @@
 package lighting;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Point;
+import primitives.Vector;
 
+/**
+ * PointLight class represents a light source in the scene.
+ */
 public class PointLight extends Light implements LightSource {
+    protected Point position;
+    private double kC=1;
+    private double kL=0;
+    private double kQ=0;
 
     /**
-     * The position of the light source in 3D space.
-     */
-    private Point position;
-    /**
-     * Constant attenuation factor (kC) affecting the intensity of the light source.
-     * This factor is independent of the distance from the light source.
-     */
-    private double kC = 1; // Constant attenuation
-    /**
-     * Linear attenuation factor (kL) affecting the intensity of the light source.
-     * This factor decreases the intensity linearly with the distance from the light
-     * source.
-     */
-    private double kL = 0; // Linear attenuation
-    /**
-     * Quadratic attenuation factor (kQ) affecting the intensity of the light
-     * source. This factor decreases the intensity quadratically with the distance
-     * from the light source.
-     */
-    private double kQ = 0; // Quadratic attenuation
-
-    /**
-     * Constructs a point light with the given intensity and position.
-     *
-     * @param intensity The intensity (color) of the light source.
-     * @param position  The position of the light source.
+     * Constructor of the class
+     * @param intensity the intensity color
+     * @param position the position
      */
     public PointLight(Color intensity, Point position) {
         super(intensity);
         this.position = position;
     }
-
     /**
-     * Sets the position of the point light source.
+     * Sets the constant attenuation factor for the point light.
      *
-     * @param position The new position of the point light sourcem i
-     * @return This PointLight object, allowing method chaining.
+     * @param  kC  the constant attenuation factor to set
+     * @return     the updated PointLight object
      */
-    public PointLight setPosition(Point position) {
-        this.position = position;
-        return this;
-    }
-
-    /**
-     * Sets the constant attenuation factor (kC) for the point light source.
-     *
-     * @param kC The new value of the constant attenuation factor.
-     * @return This PointLight object with the updated constant attenuation factor
-     *         (kC), allowing method chaining.
-     */
-    public PointLight setKC(double kC) {
+    public PointLight setKc(double kC) {
         this.kC = kC;
         return this;
     }
-
     /**
-     * Sets the linear attenuation factor (kL) for the point light source.
+     * Set the attenuation factor for light intensity.
      *
-     * @param kL The new value of the linear attenuation factor.
-     * @return This PointLight object with the updated linear attenuation factor
-     *         (kL), allowing method chaining.
+     * @param  kL  the attenuation factor to set
+     * @return     the updated PointLight object
      */
-    public PointLight setKL(double kL) {
+    public PointLight setkL(double kL) {
         this.kL = kL;
         return this;
     }
-
     /**
-     * Sets the quadratic attenuation factor (kQ) for the point light source.
+     * Set the quadratic attenuation factor for the point light.
      *
-     * @param kQ The new value of the quadratic attenuation factor.
-     * @return This PointLight object with the updated quadratic attenuation factor
-     *         (kQ), allowing method chaining.
+     * @param  kQ  the new quadratic attenuation factor
+     * @return     the updated PointLight object
      */
-    public PointLight setKQ(double kQ) {
+    public PointLight setkQ(double kQ) {
         this.kQ = kQ;
         return this;
     }
+    /**
+     * A method to retrieve the intensity color.
+     *
+     * @param p the point at which to calculate the intensity
+     * @return the intensity color
+     */
     @Override
     public Color getIntensity(Point p) {
-        double d = position.distance(p);
-        return getIntensity().scale(1d / (kC + kL * d + kQ * d * d));
+        double distance = position.distance(p);
+        return intensity.scale(1/(kC  + kL * distance + kQ * distance * distance));
     }
 
+    /**
+     * Retrieves the vector from the specified point.
+     *
+     * @param p the point from which to retrieve the vector
+     * @return the vector retrieved from the specified point
+     */
     @Override
     public Vector getL(Point p) {
-        // if the point is the same as the light source, return null
-        if (p.equals(position))
-            return null;
-        // otherwise, return the normalized vector from the light source to the point
-        return p.subtract(position).normalize();
+        return p.subtract(this.position).normalize();
+    }
+
+    /**
+     * Calculates the distance from the current point to the given point.
+     *
+     * @param p the point to calculate the distance to
+     * @return the distance from the current point to the given point
+     */
+    @Override
+    public double getDistance(Point p) {
+        return p.distance(this.position);
     }
 }

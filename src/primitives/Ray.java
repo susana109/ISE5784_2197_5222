@@ -1,130 +1,111 @@
 package primitives;
 
-import geometries.Intersectable.GeoPoint;
 import java.util.List;
-
-/**
- * Ray class represents a point and a direction vector in 3D space
- *
- * @author Avital and Tal
- */
+import geometries.Intersectable.GeoPoint;
 public class Ray {
-    /** point in ray */
-    private final Point head;
-    /** vector direction */
-    private final Vector direction;
+
+    final Point point;
+    final Vector vector;
+
     /**
-     * A constant delta value used for numerical approximations or small adjustments
+     * simple constructor
+     *
+     * @param p
+     * @param v
      */
     private static final double DELTA = 0.1;
-
-    /**
-     * ray constructor
-     *
-     * @param point  in ray
-     * @param vector in ray
-     */
     public Ray(Point point, Vector vector) {
-        head = point;
-        direction = vector.normalize(); // Ensure vector is normalized
+        this.point = point;
+        this.vector = vector.normalize();
     }
-
-    /**
-     * ray constructor with offset point
-     *
-     * @param point     in ray
-     * @param direction in ray
-     * @param normal    on plane
-     */
-    public Ray(Point point, Vector direction, Vector normal) {
-        this.direction = direction.normalize();
-        double nv = normal.dotProduct(this.direction);
-        Vector dltVector = normal.scale(nv < 0 ? -DELTA : DELTA);
-        head = point.add(dltVector);
-
-    }
-
-    /**
-     * Returns the head point of the vector.
-     *
-     * @return the head point of the vector
-     */
-    public Point getHead() {
-        return head;
-    }
-
-    /**
-     * Returns the direction vector.
-     *
-     * @return the direction vector
-     */
-    public Vector getDirection() {
-        return direction;
-    }
-
-    /**
-     * Computes a point on the ray at a given distance from the ray's origin.
-     *
-     * @param t The distance from the ray's origin to the computed point.
-     * @return The computed point on the ray at the specified distance from its
-     *         origin. If t is zero, the method returns the ray's origin point.
-     */
-    public Point getPoint(double t) {
-        return Util.isZero(t) ? head : head.add(direction.scale(t));
-    }
-
-    /**
-     * Finds the closest point to the start of the ray from a collection of points.
-     *
-     * @param points The collection of points.
-     * @return The closest point to the start of the ray.
-     */
     public Point findClosestPoint(List<Point> points) {
         return points == null || points.isEmpty() ? null
                 : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
     }
 
     /**
-     * Finds the closest GeoPoint to the start of the ray from a collection of
-     * GeoPoints.
+     * getter
      *
-     * @param intersections The collection of GeoPoints.
-     * @return The closest GeoPoint to the start of the ray.
+     * @return
      */
-    public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections) {
-        if (intersections == null || intersections.isEmpty()) {
-            return null;
-        }
+    /**
+     * get point on the ray
+     *
+     * @return new Point3D
+     */
 
-        // Initialize variables to store the closest GeoPoint and its distance
-        GeoPoint closestGeoPoint = null;
-        double closestDistance = Double.POSITIVE_INFINITY;
-
-        // Iterate through the list of GeoPoints
-        for (GeoPoint geoPoint : intersections) {
-            // Calculate the distance between the origin of the ray and the current GeoPoint
-            double distance = head.distance(geoPoint.point);
-
-            // Check if the current GeoPoint is closer than the previous closest GeoPoint
-            if (distance < closestDistance) {
-                closestGeoPoint = geoPoint;
-                closestDistance = distance;
-            }
-        }
-
-        // Return the closest GeoPoint
-        return closestGeoPoint;
+    public Point getPoint() {
+        return point;
+    }
+    public Vector getVector() {
+        return vector;
     }
 
+
+
+    public Point getPoint(double length) {
+        return Util.isZero(length) ? point : point.add(vector.scale(length));
+    }
+    /**
+     * getter
+     *
+     * @return
+     */
+
+
+    /**
+     * print ray argument
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return point.toString() + vector.toString(); // is that correct?
+    }
+
+    /**
+     * check if 2 arguments are equals
+     *
+     * @param obj
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        return (obj instanceof Ray other) && this.head.equals(other.head) && this.direction.equals(other.direction);
+        return (obj instanceof Ray ray) && point.equals(ray.point) && vector.equals(ray.vector);
+    }
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPointList) {
+
+        GeoPoint closestPoint = null;
+        double minDistance = Double.MAX_VALUE;
+        double geoPointDistance; // the distance between the "this.p0" to each point in the list
+
+        if (!geoPointList.isEmpty()) {
+            for (var geoPoint : geoPointList) {
+                geoPointDistance = this.getPoint().distance(geoPoint.point);
+                if (geoPointDistance < minDistance) {
+                    minDistance = geoPointDistance;
+                    closestPoint = geoPoint;
+                }
+            }
+        }
+        return closestPoint;
     }
 
-    @Override
-    public String toString() {
-        return "Ray:" + head + "->" + direction;
+    /**
+     * Constructor for ray deflected by DELTA
+     *
+     * @param p origin
+     * @param n   normal vector
+     * @param dir direction
+     */
+    public Ray(Point p, Vector n, Vector dir) {
+        this.vector = dir.normalize();
+        double nv = n.dotProduct(this.vector);
+        Vector delta  =n.scale(DELTA);
+        if (nv < 0)
+            delta = delta.scale(-1);
+        this.point = p.add(delta);
     }
 }

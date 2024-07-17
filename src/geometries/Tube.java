@@ -2,20 +2,20 @@ package geometries;
 
 import java.util.List;
 
-import primitives.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
+import primitives.Util;
 
-/**
- * Class Tube represents a three-dimensional tube.
- */
 public class Tube extends RadialGeometry {
-    /** Axis ray of the tube */
-    protected final Ray axisRay;
+
+    final Ray axisRay;
 
     /**
-     * Constructs a Tube object with the given radius and axis ray.
+     * constructor (using super constructor)
      *
-     * @param radius  the radius of the tube
-     * @param axisRay the axis ray of the tube
+     * @param radius
+     * @param axisRay
      */
     public Tube(double radius, Ray axisRay) {
         super(radius);
@@ -23,29 +23,46 @@ public class Tube extends RadialGeometry {
     }
 
     /**
-     * Returns the normal vector to the surface of the tube at a given point.
+     * getter
      *
-     * @param point The point on the surface of the tube
-     * @return The normal vector to the surface of the tube at the given point
+     * @return
+     */
+    public Ray getAxisRay() {
+        return axisRay;
+    }
+
+    /**
+     * getter
+     *
+     * @return
+     */
+    public double getRadius() {
+        return radius;
+    }
+
+    /**
+     * calculate The normal of the Tube at the point sent
+     *
+     * @param point
+     * @return
      */
     @Override
     public Vector getNormal(Point point) {
-
-        // Calculate the parameter t along the axis direction
-        double t = axisRay.getDirection().dotProduct(point.subtract(axisRay.getHead()));
-
-        // Calculate the closest point 'O' on the axis to the given point
-        Point o = axisRay.getPoint(t);
-
-        // Return the normalized vector from the closest point on the axis to the given
-        // point
-        return point.subtract(o).normalize();
+        Point p0 = axisRay.getPoint();
+        Vector vector = axisRay.getVector();
+        double t = vector.dotProduct(point.subtract(p0));
+        Point o = p0.add(vector.scale(t));
+        return point.subtract(o);
     }
 
+    /**
+     * Find intersections of a ray with geo points.
+     *
+     * @param  ray   the ray to find intersections with
+     * @return      a list of geo points representing the intersections
+     */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        // Auto-generated method stub
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
-
 }
