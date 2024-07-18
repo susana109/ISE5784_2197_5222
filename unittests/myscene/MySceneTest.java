@@ -26,18 +26,21 @@ public class MySceneTest {
     @Test
     public void twoTriangles (){
         scene.geometries.add(
-            new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135),
-                    new Point(75, 75, -150))
-                    .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(60)),
-            new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150))
-                    .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(60)));
+            new Triangle(new Point(0, 0, 0), new Point(-100, 0, -135),
+                    new Point(120, 75, -150))
+                    .setEmission(new Color(RED)).setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(60)),
+            new Triangle(new Point(0, 0, 0), new Point(100, 0, 135), new Point(-120, -75, 150))
+                    .setEmission(new Color(BLUE)).setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(60)));
         scene.setAmbientLight(new AmbientLight(new Color(RED), 0));
-        scene.lights.add(new SpotLight(new Color(133, 534, 200), new Point(60, 60, 100), new Vector(-1,-1,-2))
+        /*scene.lights.add(new SpotLight(new Color(133, 534, 200), new Point(60, 60, 100), new Vector(-1,-1,-2))
                 .setkL(0.0001).setkQ(0.000005));
         scene.lights.add(new PointLight(new Color(890, 456, 675), new Point(-50, -50, -50))
                 .setkL(0.0005).setkQ(0.0005));
         scene.lights.add(new DirectionalLight(new Color(121, 123, 324), new Vector(0, 0, -1)));
-
+        scene.setAmbientLight(new AmbientLight( new Color(WHITE), 0.15));*/
+        scene.lights.add(
+                new SpotLight(new Color(700, 400, 400), new Point(40, 40, 115), new Vector(-1, -1, -4)) //
+                        .setkL(4E-4).setkQ(2E-5));
         camera.renderImage();
         camera.writeToImage();
 
