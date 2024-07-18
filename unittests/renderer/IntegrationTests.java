@@ -59,19 +59,19 @@ public class IntegrationTests {
     @Test
     void testSphere() {
         final String IncorrectNumOfPoints = "ERROR: Incorrect number of intersection points at Sphere";
-        Sphere sphere = new Sphere(new Point(0, 0, -3), 1);
+        Sphere sphere = new Sphere(1,new Point(0, 0, -3));
         // TC01: The sphere is after the view plane (2 points)
         assertEquals(2, countOfIntersection(sphere, camera, 3, 3), IncorrectNumOfPoints);
         // TC02: The sphere contains the view plane (18 points)
-        assertEquals(18, countOfIntersection(new Sphere(new Point(0, 0, -2.5), 2.5),
+        assertEquals(18, countOfIntersection(new Sphere(2.5,new Point(0, 0, -2.5)),
                 cameraBuilder.setLocation(new Point(0, 0, 0.5)).build(), 3, 3), IncorrectNumOfPoints);
         // TC03: The sphere intersects with the view plane (10 points)
-        assertEquals(10, countOfIntersection(new Sphere(new Point(0, 0, -2), 2),
+        assertEquals(10, countOfIntersection(new Sphere(2,new Point(0, 0, -2)),
                 cameraBuilder.setLocation(new Point(0, 0, 0.5)).build(), 3, 3), IncorrectNumOfPoints);
         // TC04: The sphere contains the camera (9 points)
-        assertEquals(9, countOfIntersection(new Sphere(new Point(0, 0, -1), 4), camera, 3, 3), IncorrectNumOfPoints);
+        assertEquals(9, countOfIntersection(new Sphere(4,new Point(0, 0, -1)), camera, 3, 3), IncorrectNumOfPoints);
         // TC05: The sphere is behind the camera (0 points)
-        assertEquals(0, countOfIntersection(new Sphere(new Point(0, 0, 1), 0.5), camera, 3, 3), IncorrectNumOfPoints);
+        assertEquals(0, countOfIntersection(new Sphere(0.5,new Point(0, 0, 1)), camera, 3, 3), IncorrectNumOfPoints);
     }
 
     /**

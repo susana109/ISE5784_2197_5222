@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17db2083-22a5-4f34-95a5-e77df444478f" name="Changes" comment="middle step 7">
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/My scene test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/complexSceneTest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/reflectionTwoSpheresMirrored.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/refractionShadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/refractionTwoSpheres.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowSphereTriangleInitial.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowSphereTriangleMove1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowSphereTriangleMove2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowSphereTriangleSpot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowSphereTriangleSpot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/shadowTrianglesSphere.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/triangles.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/trianglesMultipleLights.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/myscene/MySceneTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +88,10 @@
     "JUnit.ImageWriterTest.executor": "Run",
     "JUnit.ImageWriterTest.testWriteToImage.executor": "Debug",
     "JUnit.IntegrationTests.executor": "Run",
+    "JUnit.IntegrationTests.testSphere.executor": "Run",
     "JUnit.LightsTests.executor": "Run",
+    "JUnit.MySceneTest.executor": "Run",
+    "JUnit.MySceneTest.twoTriangles.executor": "Run",
     "JUnit.PlaneTest.executor": "Run",
     "JUnit.PlaneTest.testFindIntersections.executor": "Run",
     "JUnit.PlaneTest.testGetNormal.executor": "Run",
@@ -86,6 +106,7 @@
     "JUnit.RayTest.executor": "Run",
     "JUnit.RayTest.findClosestPointTest.executor": "Coverage",
     "JUnit.RayTest.getPoint.executor": "Run",
+    "JUnit.ReflectionRefractionTests.executor": "Run",
     "JUnit.RenderTests.basicRenderXml.executor": "Run",
     "JUnit.RenderTests.executor": "Run",
     "JUnit.RenderTests.renderMultiColorTest.executor": "Run",
@@ -154,39 +175,9 @@
       <command value="TubeTest" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests.renderMultiColorTest">
+  <component name="RunManager" selected="JUnit.MySceneTest.twoTriangles">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_2197_5222" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,22 +197,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MySceneTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="myscene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
+      <option name="PACKAGE_NAME" value="myscene" />
+      <option name="MAIN_CLASS_NAME" value="myscene.MySceneTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RenderTests.renderMultiColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MySceneTest.twoTriangles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="myscene.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="myscene" />
+      <option name="MAIN_CLASS_NAME" value="myscene.MySceneTest" />
+      <option name="METHOD_NAME" value="twoTriangles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReflectionRefractionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_2197_5222" />
       <extension name="coverage">
         <pattern>
@@ -230,9 +237,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
-      <option name="METHOD_NAME" value="renderMultiColorTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShadowTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_2197_5222" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -266,19 +287,19 @@
       <item itemvalue="Application.Unnamed" />
       <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="JUnit.TubeTest" />
-      <item itemvalue="JUnit.RenderTests.renderMultiColorTest" />
-      <item itemvalue="JUnit.CameraTest" />
+      <item itemvalue="JUnit.MySceneTest" />
+      <item itemvalue="JUnit.MySceneTest.twoTriangles" />
+      <item itemvalue="JUnit.ReflectionRefractionTests" />
+      <item itemvalue="JUnit.ShadowTests" />
       <item itemvalue="JUnit.IntegrationTests" />
-      <item itemvalue="JUnit.LightsTests" />
-      <item itemvalue="JUnit.ImageWriterTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTests.renderMultiColorTest" />
-        <item itemvalue="JUnit.LightsTests" />
+        <item itemvalue="JUnit.MySceneTest.twoTriangles" />
+        <item itemvalue="JUnit.MySceneTest" />
+        <item itemvalue="JUnit.ShadowTests" />
+        <item itemvalue="JUnit.ReflectionRefractionTests" />
         <item itemvalue="JUnit.IntegrationTests" />
-        <item itemvalue="JUnit.ImageWriterTest" />
-        <item itemvalue="JUnit.CameraTest" />
       </list>
     </recent_temporary>
   </component>
@@ -522,11 +543,6 @@
           <url>jar://$PROJECT_DIR$/../Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/lib/src.zip!/java.base/java/util/ArrayList.java</url>
           <line>1596</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/lighting/AmbientLight.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

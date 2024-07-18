@@ -23,7 +23,7 @@ class RayTest {
         assertEquals(new Point(-2, 0, 0), r1.getPoint(-3), "Wrong pont with a negative distance");
         // =============== Boundary Values Tests ==================
         //TC03:Distance zero(return head of ray)
-        assertEquals(r1.getHead(), r1.getPoint(0), "Wrong pont with a distance of zero");
+        assertEquals(r1.getPoint(), r1.getPoint(0), "Wrong pont with a distance of zero");
     }
 
     @Test
