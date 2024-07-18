@@ -34,6 +34,11 @@ public class Vector extends Point {
         }
     }
 
+    public Double3 getVector()
+    {
+        return xyz;
+    }
+
 
     public String toString() {
         return super.toString();
